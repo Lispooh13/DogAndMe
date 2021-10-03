@@ -1,24 +1,37 @@
-# README
+# <ここにアプリ名を入力>
+ワンジョイ！
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+愛犬と出かけた思い出を記録し、その思い出と場所を共有する
 
-Things you may want to cover:
+### サイトテーマ
+ワンちゃんと旅行に行くことの楽しさ、ワンちゃんにとっても良い効果があることを伝えたい
 
-* Ruby version
+### テーマを選んだ理由
+高齢の愛犬と思い出づくりをしたい目的で、お気に入りの場所を見つけるのに苦労した経験から、行って良かった場所を手軽に記録・共有できるコンテンツがあれば良いと思いました。
+コロナ禍でペットを飼う人が増えていること、ペットを連れてキャンプを楽しむ人が増えていることもあり、このテーマを選びました。
 
-* System dependencies
+### ターゲットユーザ
+愛犬と出かけたい人
+愛犬との思い出を記録、共有したい人
+気になっている場所の情報収集がしたい人
 
-* Configuration
 
-* Database creation
+### 主な利用シーン
+次の休日にどこに出かけようか探すとき
+愛犬との旅行後に振り返って思い出として振り返るとき
 
-* Database initialization
 
-* How to run the test suite
+## 設計書
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1pju8xNFZhJ97pJQXef4C5GVJLqodyp5_J4uNo-nEyOE/edit#gid=0
 
-* ...
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：Bootstrap
+- IDE：Cloud9
