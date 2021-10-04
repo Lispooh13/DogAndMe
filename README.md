@@ -22,7 +22,7 @@
 
 
 ## 設計書
-https://docs.google.com/spreadsheets/d/1XyPlzt1KOJDj6J7NqBqK3mW5Ig3SuKL9P4C-NJhbGLY/edit#gid=1529666906
+https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
 https://drive.google.com/drive/my-drive
 
 ## チャレンジ要素一覧
