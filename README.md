@@ -22,9 +22,9 @@
 
 
 ## 設計書
-ER図
+- ER図
 https://app.diagrams.net/#G1DtNVc8eCMDWTsXzjUaQYcKP6dJcPl6JR
-テーブル定義書https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
+- テーブル定義書https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
 
 
 ## チャレンジ要素一覧
