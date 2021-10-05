@@ -7,8 +7,8 @@
 ワンちゃんとのお出かけが気軽にできるサイト
 
 ### テーマを選んだ理由
-高齢な愛犬との思い出づくりをしたい目的で、ワンちゃん連れOKで、写真がきれいに撮れる場所を探していた際、様々なサイトや書籍から念入りに下調べをしなければならず、また実際に訪れても、思っていたのと違ったなど苦労した経験があります。住所や目的、犬のサイズからスポットを検索できて、愛犬家同士で行って良かった場所や、実は同伴OKで穴場な場所などを手軽に情報共有＆収集ができるコンテンツがあれば、下調べ時はもちろん、旅先でも、もっと気軽にワンちゃんと色々な所に出かけられると思いました。  
-私と同じ思いをされている方に、ワンちゃんとの限られた時間の中で、訪れたことのないスポットを沢山探せて、新たな思い出づくりの手助けができればと思い、このテーマを選びました。
+高齢な愛犬との思い出づくりをしたい目的で、ワンちゃん連れOKで写真がきれいに撮れる場所を探していた際、様々なサイトや書籍から念入りに下調べをしなければならず、また実際に訪れても、思っていたのと違ったなど苦労した経験があります。住所や目的、犬のサイズからスポットを検索できて、愛犬家同士で行って良かった場所や、実は同伴OKで穴場な場所などを手軽に情報共有＆収集ができるコンテンツがあれば、下調べ時はもちろん、旅先でももっと気軽にワンちゃんと色々な所に出かけられると思いました。  
+私と同じ思いをされている方に、ワンちゃんとの限られた時間の中で訪れたことのないスポットを沢山探せて、新たな思い出づくりの手助けができればと思い、このテーマを選びました。
 
 
 ### ターゲットユーザ
@@ -23,9 +23,9 @@
 
 
 ## 設計書
-- ワイヤーフレーム&nbsp;https://app.diagrams.net/#G1S-06Gp4H6ZfnPkTE98sq8GJZve_U8ilf
-- ER図&nbsp;https://app.diagrams.net/#G1DtNVc8eCMDWTsXzjUaQYcKP6dJcPl6JR
-- テーブル定義書&nbsp;https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
+- ワイヤーフレームhttps://app.diagrams.net/#G1S-06Gp4H6ZfnPkTE98sq8GJZve_U8ilf
+- ER図https://app.diagrams.net/#G1DtNVc8eCMDWTsXzjUaQYcKP6dJcPl6JR
+- テーブル定義書https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1pju8xNFZhJ97pJQXef4C5GVJLqodyp5_J4uNo-nEyOE/edit#gid=0
