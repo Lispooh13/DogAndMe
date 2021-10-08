@@ -19,17 +19,16 @@
 - 愛犬とお出かけしたおすすめの場所を共有したい飼い主の方
 - ワンちゃん同伴OKなことをPRしたいお店や施設の方
 
-
 ### 主な利用シーン
 - 愛犬を連れてどこに出かけようか探すとき
 - 旅先でワンちゃん同伴OKなお店等を知りたいとき
 - 気になっている場所の口コミや様子を知りたいとき
 
 ## 設計書
-- ワイヤーフレーム https://app.diagrams.net/#G1S-06Gp4H6ZfnPkTE98sq8GJZve_U8ilf
-- ER図 https://app.diagrams.net/#G1DtNVc8eCMDWTsXzjUaQYcKP6dJcPl6JR
-- テーブル定義書 https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
-- アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/1Gp5X7sv4y4kz66pKRJ9heFXrF1L7U-bC3Oiq_Ye2bic/edit#gid=1837894092
+- ワイヤーフレーム  https://app.diagrams.net/#G1S-06Gp4H6ZfnPkTE98sq8GJZve_U8ilf
+- ER図  https://app.diagrams.net/#G1DtNVc8eCMDWTsXzjUaQYcKP6dJcPl6JR
+- テーブル定義書  https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=265461834
+- アプリケーション詳細設計  https://docs.google.com/spreadsheets/d/1Gp5X7sv4y4kz66pKRJ9heFXrF1L7U-bC3Oiq_Ye2bic/edit#gid=1837894092
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1pju8xNFZhJ97pJQXef4C5GVJLqodyp5_J4uNo-nEyOE/edit#gid=0
