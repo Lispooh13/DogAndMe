@@ -1,30 +1,31 @@
 <div class="container">
-  
+
   <h2>ログイン</h2>
   <h4><span style="margin-left:20px">会員の方はこちらからログイン</h4>
-  
+
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
     <div class="form-inline form-group row mt-5">
         <%= f.label :"メールアドレス", class: "col-3 control-label" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"col-7 form-control", :placeholder =>"sample@example.com"%>
+
     </div>
-        
+
     <div class="form-inline form-group row mt-3">
         <%= f.label :"パスワード", class: "col-3 control-label" %>
         <%= f.password_field :password, autocomplete: "current-password" , class:"col-7 form-control" %>
     </div>
-  
-  
+
+
     <div class="form-inline form-group row mt-3">
         <%= f.label :" ", class:"col-3" %>
         <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
-    
+
   <% end %>
-  
+
   <h4><span style="margin-left:20px">会員登録がお済みでない方</span></h4>
   <span style="margin-left:50px"><%= link_to "こちら",new_user_registration_path %>から新規登録を行ってください
-     
+
 
 </div>
