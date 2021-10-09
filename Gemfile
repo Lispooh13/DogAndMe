@@ -66,3 +66,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
