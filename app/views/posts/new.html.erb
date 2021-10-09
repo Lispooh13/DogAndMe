@@ -1,0 +1,51 @@
+<div class='container'>
+  <h3><span style="margin-left:50px">新規投稿</span></h3>
+  <div class='row mt-4'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+     
+     <%= form_with model:@post, local:true do |f| %>
+      <div class="form-group row mt-5">
+        <div class="col-3"><%= f.label :image, "画像" %></div>
+        <div class="col-9">
+          <%= f.attachment_field :post_images_images, multiple: true %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3"><%= f.label :place, "場所名" %></div>
+        <div class="col-9">
+          <%= f.text_field :place, :placeholder => "◯◯公園", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3"><%= f.label :address, "住所" %></div>
+        <div class="col-9">
+          <%= f.text_field :address, :placeholder => "山梨県北杜市", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3"><%= f.label :purpose, "主な目的" %></div>
+        <div class="col-9">
+          <!--<= f.collection_select(:genre_id, @genres, :id, :name, {prompt: "--選択してください--"} ) %>-->
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3"><%= f.label :body, "感想" %></div>
+        <div class="col-9">
+          <%= f.text_area :body, :placeholder => "とても広い敷地で、遊び回るのに最適な公園でした", class: 'form-control' %>
+        </div>
+      </div>
+
+       
+
+      <div class="form-group row">
+        <div class="col-3"></div>
+        <div class="col-9"><%= f.submit '新規登録', class: 'btn btn-success' %></div>
+      </div>
+     <% end %>
+   </div>
+  </div>
+</div>
