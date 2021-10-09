@@ -2,9 +2,12 @@
   <div class='row'>
     <% @posts.each do |post| %>
       <div class="col-12, m-3">
+        
          <%= link_to post_path(post), class: "link" do %>
-         <%= attachment_image_tag image, :image, :fill, 200, 150, format: 'jpeg',fallback: "no-image-icon.jpg",size: '200x150'%><br>
+         <% post.post_images.first(1).each do |image| %>
+         <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
 
+         <% end %>
          <% end %>
          <%= link_to post.place,post_path(post) %>
       </div>

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row mt-4">
       <div class="col-md-5 mt-3">
+
         <% if @post.post_images.present? %>
           <% @post.post_images.each do |image| %>
             <%= attachment_image_tag image, :image, :fill, 200, 200 %>
@@ -8,9 +9,10 @@
         <% else %>
           <%= image_tag 'no-image-icon.jpg', size: '200x200' %>
         <% end %>
-        
-        
+
+
       </div>
+      <%= @post.user.name %>
       <div class="col-md-5 bg-light pt-3 pb-3">
         <table class="table table-borderless">
           <tr>
