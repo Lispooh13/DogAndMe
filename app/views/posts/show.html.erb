@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row mt-4">
+      <div class="col-md-5 mt-3">
+
+        <% if @post.post_images.present? %>
+          <% @post.post_images.each do |image| %>
+            <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'no-image-icon.jpg', size: '200x200' %>
+        <% end %>
+
+
+      </div>
+      <%= @post.user.name %>
+      <div class="col-md-5 bg-light pt-3 pb-3">
+        <table class="table table-borderless">
+          <tr>
+            <td>場所名</td>
+            <td><%= @post.place %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @post.address %></td>
+          </tr>
+          <tr>
+            <td>主な目的</td>
+            <td><%= @post.purpose %></td>
+          </tr>
+          <tr>
+            <td>日付</td>
+            <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
+          </tr>
+          <tr>
+            <td>感想</td>
+            <td><%= @post.body %></td>
+          </tr>
+        </table>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
+        <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "Are you sure？" %>
+
+      </div>
+  </div>
+</div>
