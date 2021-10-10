@@ -67,6 +67,7 @@ gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
 gem 'dotenv-rails'
+gem 'gon'
 group :production do
   gem 'mysql2'
 end

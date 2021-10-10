@@ -20,6 +20,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
+    #変数をJSで使えるようにするため
+    gon.post = @post
   end
 
   def edit
