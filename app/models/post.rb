@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     if search != ""
     Post.where('place LIKE(?)', "%#{search}%")
     else
-    Post.page(params[:page]).reverse_order
+    Post.all
     end
   end
 

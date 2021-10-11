@@ -4,7 +4,7 @@
     </div>
     
   <div class='row'>
-    <% render 'index', post: @post %>
+    <%= render 'posts/index', posts: @posts %>
     <%= paginate @posts_page %>
   </div>
 </div>
