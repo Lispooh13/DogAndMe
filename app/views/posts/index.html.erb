@@ -1,25 +1,28 @@
 <div class='container'>
-  <div class='row'>
+  <div class='row mt-4'>
+    <h3>新着順</h3>
+    </div>
+    <div class='row'>
     <% @posts.each do |post| %>
-    
+
       <div class="col-12, m-3">
         <%= link_to post_path(post), class: "link" do %>
-        
+
           <% if post.post_images.present? %>
             <% post.post_images.first(1).each do |image| %>
               <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
             <% end %>
-            
+
           <% else %>
             <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
-            
+
           <% end %>
-        
+
         <% end %>
-        
+
          <%= link_to post.place,post_path(post) %>
       </div>
-      
+
     <% end %>
     <%= paginate @posts %>
   </div>

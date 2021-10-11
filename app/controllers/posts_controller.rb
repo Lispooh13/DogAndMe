@@ -31,8 +31,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @post.post_images.build
-
+    @post_images = @post.post_images
+    
   end
 
   def update
