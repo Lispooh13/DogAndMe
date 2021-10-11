@@ -6,7 +6,7 @@
     <% @posts.each do |post| %>
 
       <div class="col-12, m-3">
-        <%= link_to post_path(post), class: "link" do %>
+        <%= link_to post_path(post) do %>
 
           <% if post.post_images.present? %>
             <% post.post_images.first(1).each do |image| %>

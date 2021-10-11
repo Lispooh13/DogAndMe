@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+before_action :ensure_correct_user, only:[:edit, :destroy]
 
   def new
     @post = Post.new
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
+    @user = @post.user
     #変数をJSで使えるようにするため
     gon.post = @post
   end
@@ -32,7 +33,6 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @post_images = @post.post_images
-
   end
 
   def update
@@ -67,6 +67,14 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:place, :address, :purpose, :latitude, :longitude, :body, post_images_images: [])
+  end
+
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+     unless @post.user == current_user
+     redirect_to posts_path
+     end
   end
 
 end
