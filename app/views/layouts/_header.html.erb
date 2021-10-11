@@ -7,6 +7,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <li>
+            <%= link_to posts_path do%>
+            <i class="fas fa-dog"></i>投稿一覧
+            <% end %>
+          </li>
 
           <% if user_signed_in? %>
 
@@ -17,21 +22,12 @@
           </li>
 
           <li>
-            <%= link_to posts_path do%>
-            <i class="fas fa-book-open"></i>投稿一覧
-            <% end %>
-          </li>
-
-
-          <li>
             <%= link_to new_post_path do%>
             <i class="far fa-plus-square"></i>新規投稿
             <% end %>
           </li>
-
-
-
-          <li>
+          
+          <!--<li>-->
           <!--  <= link_to users_path do%>-->
           <!--  <i class="fas fa-users"></i>ユーザー一覧-->
           <!--  < end %>-->
@@ -47,7 +43,7 @@
 
           <li>
             <%= link_to about_path do%>
-            <i class="fas fa-link"></i>ワンジョイとは？
+            <i class="fas fa-paw"></i>ワンジョイとは？
             <% end %>
           </li>
 
