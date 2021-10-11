@@ -1,36 +1,38 @@
 <div class='container'>
-  <div class='row'>
-    <div class="col-6, m-3">
+  <div class="row mt-4">
+    <div class="col-2">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-icon.jpg" %>
-      <%= @user.name %>
-      <% if @user.id == current_user.id %>
-        <p><%= link_to "マイページ編集", edit_user_path(@user), class: "btn btn-sm btn-success" %></p>
-      <% end %>
     </div>
     
-    
-    <% @posts.each do |post| %>
-    
-      <div class="col-6, m-3">
-        <%= link_to post_path(post), class: "link" do %>
-        
-          <% if post.post_images.present? %>
-            <% post.post_images.first(1).each do |image| %>
-              <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
-            <% end %>
-            
-          <% else %>
-            <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
-            
-          <% end %>
-        
-        <% end %>
-        
-         <%= link_to post.place,post_path(post) %>
-      </div>
+    <div class="col-10">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">名前</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">自己紹介</th>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <% if @user.id == current_user.id %>
+                <%= link_to "マイページ編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
+              <% end %>
+  
+            </td>
+          </tr>
+        </tbody>
+      </table>
       
-    <% end %>
-    <%= paginate @posts %>
-
+    </div>
   </div>
+  
+  <h3>投稿一覧</h3>
+  <div class="row m-4">
+    <%= render 'posts/index', posts: @posts%>
+  </div>
+  <%= paginate @posts %>
 </div>
