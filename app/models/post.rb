@@ -13,4 +13,12 @@ class Post < ApplicationRecord
   validates :purpose, presence: true
   validates :body, presence: true
 
+  def self.search(search)
+    if search != ""
+    Post.where('place LIKE(?)', "%#{search}%")
+    else
+    Post.page(params[:page]).reverse_order
+    end
+  end
+
 end
