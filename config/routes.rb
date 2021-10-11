@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   
   resources :posts
   
-  
+  resources :users, only: [:show, :edit, :update]
   
 end

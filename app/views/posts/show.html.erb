@@ -1,46 +1,47 @@
 <div class="container">
   <div class="row mt-4">
-      <div class="col-5 mt-3">
-
-        <% if @post.post_images.present? %>
-          <% @post.post_images.each do |image| %>
-            <%= attachment_image_tag image, :image, :fill, 200, 200 %>
-          <% end %>
-        <% else %>
-          <%= image_tag 'no-image-icon.jpg', size: '200x200' %>
+    <div class="col-6 mt-3">
+      <% if @post.post_images.present? %>
+        <% @post.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image, :fill, 200, 200 %>
         <% end %>
+      <% else %>
+        <%= image_tag 'no-image-icon.jpg', size: '200x200' %>
+      <% end %>
+    </div>
 
-        <!--地図表示-->
-        <div id='map'>
-        </div>
-        
-        <style>
-        #map{
-          height: 300px;
-        }
-        </style>
-        
-        <script>
+    <div class="col-6 bg-light pt-3 pb-3">
+      <!--地図表示-->
+      <div id='map'></div>
+
+      <style>
+      #map{
+        height: 300px;
+        width: 500px;
+      }
+      </style>
+
+      <script>
         let map
         let geocoder
-        
+  
         function initMap(){
           // geocoderを初期化
           geocoder = new google.maps.Geocoder();
-        
+  
           map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 15
           });
             // 住所入力を取得
           let inputAddress = `${gon.post.address}`;
-        
+  
           // geocodingしたあとmapを移動
           geocoder.geocode( { 'address': inputAddress}, function(results, status) {
             if (status == 'OK') {
         // map.setCenterで地図が移動
               map.setCenter(results[0].geometry.location);
-        
+  
         // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
               var marker = new google.maps.Marker({
                   map: map,
@@ -51,43 +52,45 @@
             }
           });
         }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+
+      <table class="table table-borderless">
+        <tr>
+          <td>
+            <%= link_to user_path(@user) do %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no-image-icon.jpg" %>
+            <% end %>
+            </td>
+          <td><%= link_to @user.name, user_path(@user) %></td>
+        </tr>
+        <tr>
+          <td>場所名</td>
+          <td><%= @post.place %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= @post.address %></td>
+        </tr>
+        <tr>
+          <td>主な目的</td>
+          <td><%= @post.purpose %></td>
+        </tr>
+        <tr>
+          <td>日付</td>
+          <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
+        </tr>
+        <tr>
+          <td>感想</td>
+          <td><%= @post.body %></td>
+        </tr>
+      </table>
         
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
-        
-      </div>
-      
-      
-      <div class="col-7 bg-light pt-3 pb-3">
-        <table class="table table-borderless">
-          <tr>
-            <td></td>
-            <td><%= @post.user.name %></td>
-          </tr>
-          <tr>
-            <td>場所名</td>
-            <td><%= @post.place %></td>
-          </tr>
-          <tr>
-            <td>住所</td>
-            <td><%= @post.address %></td>
-          </tr>
-          <tr>
-            <td>主な目的</td>
-            <td><%= @post.purpose %></td>
-          </tr>
-          <tr>
-            <td>日付</td>
-            <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
-          </tr>
-          <tr>
-            <td>感想</td>
-            <td><%= @post.body %></td>
-          </tr>
-        </table>
+      <% if @user.id == current_user.id %>
         <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
         <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
-
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>
