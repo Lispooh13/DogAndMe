@@ -6,9 +6,15 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
     @post.post_images.build
   end
 
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    # @post_images = @post.post_images
+    # if @post_images.count.to_i > 8
+    #   flash[:notice] = "最大8枚までです。"
+    #   render :edit
+    # end
     if @post.save
       flash[:notice] = "投稿が完了しました。"
       redirect_to post_path(@post)
@@ -16,6 +22,7 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
       render :new
     end
   end
+
 
   def index
     @posts = Post.page(params[:page]).reverse_order
@@ -30,20 +37,16 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
     gon.post = @post
   end
 
+
   def edit
     @post = Post.find(params[:id])
     @post_images = @post.post_images
   end
 
+
   def update
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
-    # @post_images = @post.post_images
-    # if @post_images.count > 6
-    #   flash[:notice] = "最大6枚までです。"
-    #   render :edit
-
-    # end
 
     if @post.update(post_params)
       flash[:notice] = "変更が完了しました。"
@@ -54,6 +57,7 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
       render :edit
     end
   end
+
 
   def destroy
     @post = Post.find(params[:id])
