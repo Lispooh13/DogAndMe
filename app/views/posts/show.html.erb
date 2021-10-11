@@ -3,10 +3,10 @@
     <div class="col-7 mt-3">
       <% if @post.post_images.present? %>
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 300, 300 %>
+          <%= attachment_image_tag image, :image, :fill, 300, 250 %>
         <% end %>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '300x300' %>
+        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
       <% end %>
     </div>
 
