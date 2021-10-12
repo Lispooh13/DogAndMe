@@ -1,0 +1,17 @@
+<% posts.each do |post| %>
+  <div class="col-12, m-1">
+    <%= link_to post_path(post), class: "link" do %>
+
+      <% if post.post_images.present? %>
+        <% post.post_images.first(1).each do |image| %>
+          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '250x200'%><br>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no-image-icon.jpg', size: '250x200' %><br>
+      <% end %>
+
+    <% end %>
+
+    <%= link_to post.place,post_path(post) %>
+  </div>
+<% end %>
