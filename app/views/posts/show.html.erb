@@ -1,17 +1,56 @@
 <div class="container">
-  <div class="row mt-4">
-    <div class="col-6 mt-3">
+  <div class="row mt-2">
+    <div class="col-7 mt-3">
       <% if @post.post_images.present? %>
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+          <%= attachment_image_tag image, :image, :fill, 300, 250 %>
         <% end %>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '200x200' %>
+        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
       <% end %>
     </div>
 
-    <div class="col-6 bg-light pt-3 pb-3">
-      <!--地図表示-->
+    <div class="col-5">
+
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no-image-icon.jpg" %>
+              <% end %>
+              </td>
+            <td><%= link_to @user.name, user_path(@user) %></td>
+          </tr>
+          <tr>
+            <th scope="row">場所名</th>
+            <td><%= @post.place %></td>
+          </tr>
+          <tr>
+            <th scope="row">住所</th>
+            <td><%= @post.address %></td>
+          </tr>
+          <tr>
+            <th scope="row">主な目的</th>
+            <td><%= @post.purpose %></td>
+          </tr>
+          <tr>
+            <th scope="row">日付</th>
+            <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
+          </tr>
+          <tr>
+            <th scope="row">感想</th>
+            <td><%= @post.body %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if @user.id == current_user.id %>
+        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
+        <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+
+      <h4>地図</h4>
       <div id='map'></div>
 
       <style>
