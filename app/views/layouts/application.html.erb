@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ワンジョイ</title>
+    <title>ワンジョイ！</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,7 +14,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <!--現在のページがrootなら呼び出さない-->
+    <% unless current_page?(root_path) %> 
+      <%= render 'layouts/header' %>
+    <% end %>
 
   <main>
     <% if flash[:notice] %>

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :edit, :update]
   
+  get 'search' => "searches#search"
+  
 end

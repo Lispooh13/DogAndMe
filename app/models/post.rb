@@ -13,4 +13,15 @@ class Post < ApplicationRecord
   validates :purpose, presence: true
   validates :body, presence: true
 
+  def self.search(search)
+    if search != ""
+      Post.where('place LIKE(?)', "%#{search}%")
+      Post.where('address LIKE(?)', "%#{search}%")
+      Post.where('purpose LIKE(?)', "%#{search}%")
+      Post.where('body LIKE(?)', "%#{search}%")
+    else
+    Post.all
+    end
+  end
+
 end
