@@ -2,6 +2,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :post_images, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
 
   #PostImageのimageを取得
   accepts_attachments_for :post_images, attachment: :image
@@ -12,6 +14,7 @@ class Post < ApplicationRecord
   validates :address, presence: true
   validates :purpose, presence: true
   validates :body, presence: true
+  
 
   def self.search(search)
     if search != ""

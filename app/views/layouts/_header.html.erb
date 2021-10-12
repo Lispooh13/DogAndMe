@@ -41,7 +41,7 @@
           </li>
           
           <li>
-            <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
+            <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |f| %>
               <%= f.text_field :keyword, placeholder: "キーワードを入力",size: "20", class: "search-input" %>
               <%= f.submit "検索",class: "search-btn" %>
             <% end %>
