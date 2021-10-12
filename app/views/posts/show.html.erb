@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-2">
-    <div class="col-7 mt-3">
+    <div class="col-7 mt-2">
       <% if @post.post_images.present? %>
         <% @post.post_images.each do |image| %>
           <%= attachment_image_tag image, :image, :fill, 300, 250 %>
@@ -10,7 +10,7 @@
       <% end %>
     </div>
 
-    <div class="col-5">
+    <div class="col-5 mt-2">
 
       <table class="table table-sm">
         <tbody>
@@ -44,7 +44,13 @@
           </tr>
         </tbody>
       </table>
-
+      
+      <!--自分の投稿にはいいねボタンが付かない-->
+      <% if @user.id != current_user.id %>
+        <%= render 'favorites/favorite' , post: @post %>
+      <% end %>
+      
+      
       <% if @user.id == current_user.id %>
         <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
         <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
@@ -95,41 +101,6 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
 
-      <table class="table table-borderless">
-        <tr>
-          <td>
-            <%= link_to user_path(@user) do %>
-              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no-image-icon.jpg" %>
-            <% end %>
-            </td>
-          <td><%= link_to @user.name, user_path(@user) %></td>
-        </tr>
-        <tr>
-          <td>場所名</td>
-          <td><%= @post.place %></td>
-        </tr>
-        <tr>
-          <td>住所</td>
-          <td><%= @post.address %></td>
-        </tr>
-        <tr>
-          <td>主な目的</td>
-          <td><%= @post.purpose %></td>
-        </tr>
-        <tr>
-          <td>日付</td>
-          <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
-        </tr>
-        <tr>
-          <td>感想</td>
-          <td><%= @post.body %></td>
-        </tr>
-      </table>
-
-      <% if @user.id == current_user.id %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
-        <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
-      <% end %>
     </div>
   </div>
 </div>

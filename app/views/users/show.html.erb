@@ -3,7 +3,7 @@
     <div class="col-2">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-icon.jpg" %>
     </div>
-    
+
     <div class="col-10">
       <table class="table">
         <tbody>
@@ -21,18 +21,42 @@
               <% if @user.id == current_user.id %>
                 <%= link_to "マイページ編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
               <% end %>
-  
+
             </td>
           </tr>
         </tbody>
       </table>
-      
+
     </div>
   </div>
-  
+
   <h3>投稿一覧</h3>
   <div class="row m-4">
     <%= render 'posts/index', posts: @posts %>
+  </div>
+  <%= paginate @posts %>
+
+  <h3>いいね一覧</h3>
+  <div class="row m-4">
+    <% if @favorite_list.present? %>
+      <% @favorite_list.each do |post| %>
+        <div class="col-12, m-1">
+          <%= link_to post_path(post), class: "link" do %>
+
+            <% if post.post_images.present? %>
+              <% post.post_images.first(1).each do |image| %>
+                <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '250x200'%><br>
+              <% end %>
+            <% else %>
+              <%= image_tag 'no-image-icon.jpg', size: '250x200' %><br>
+            <% end %>
+
+          <% end %>
+
+          <%= link_to post.place,post_path(post) %>
+       </div>
+      <% end %>
+    <% end %>
   </div>
   <%= paginate @posts %>
 </div>
