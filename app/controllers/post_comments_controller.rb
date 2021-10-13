@@ -16,7 +16,6 @@ class PostCommentsController < ApplicationController
     @post =Post.find(params[:post_id])
     post_comment = @post.post_comments.find(params[:id])
     post_comment.destroy
-    #BookComment.find_by(id: params[:id],book_id: params[:book_id]).destroy
   end
 
   private
