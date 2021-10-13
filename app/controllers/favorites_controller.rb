@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
     if @post.user_id != current_user.id   # 投稿者本人はいいね不可
        @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
     end
+
+    #@post = Post.find(params[:post_id])
   end
 
 

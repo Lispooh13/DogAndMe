@@ -35,6 +35,7 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
     @user = @post.user
     #変数をJSで使えるようにするため
     gon.post = @post
+    @post_comment = PostComment.new
   end
 
 

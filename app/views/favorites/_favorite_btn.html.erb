@@ -2,14 +2,12 @@
   <% if !post.favorites.exists?(user: current_user, post_id: post.id) %>
     <%= link_to post_favorites_path(post), method: :post, remote: true, class: "favorite-btn favorite-post" do %>
       <i class="far fa-heart"></i>
-      <span>いいね！</span>
       <%= post.favorites.count %>
     <% end %>
 <!--いいね登録済みのとき-->
   <% else %>
     <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
       <i class="fas fa-heart"></i>
-      <span>いいね！</span>
       <%= post.favorites.count %>
     <% end %>
   <% end %>

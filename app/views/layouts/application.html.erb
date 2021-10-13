@@ -5,28 +5,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-<!--gonというGemを使用-->
-   <%= include_gon %>
+    <!--gonというGemを使用-->
+    <%= include_gon %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/3507c66765.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <!--現在のページがrootなら呼び出さない-->
     <% unless current_page?(root_path) %> 
       <%= render 'layouts/header' %>
     <% end %>
 
-  <main>
-    <% if flash[:notice] %>
-     <p id="notice">
-       <%= flash[:notice] %>
-     </p>
-   <% end %>
-    <%= yield %>
-  </main>
+    <main>
+      <% if flash[:notice] %>
+        <p id="notice">
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+      <%= yield %>
+    </main>
 
     <%= render 'layouts/footer' %>
   </body>

@@ -4,14 +4,16 @@
 
       <% if post.post_images.present? %>
         <% post.post_images.first(1).each do |image| %>
-          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '250x200'%><br>
+          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
         <% end %>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '250x200' %><br>
+        <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
       <% end %>
 
     <% end %>
 
-    <%= link_to post.place,post_path(post) %>
+    <%= link_to post.place,post_path(post) %><br>
+    <%= render 'favorites/favorite_btn' , post: post %>
+    <%= render 'post_comments/comment_count' , post: post %>
   </div>
 <% end %>

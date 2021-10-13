@@ -6,3 +6,5 @@ ja:
         address: 住所
         purpose: 主な目的
         body: 感想
+      user:
+        name: 名前

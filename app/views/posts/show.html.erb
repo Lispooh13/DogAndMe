@@ -1,18 +1,18 @@
 <div class="container">
-  <div class="row mt-2">
-    <div class="col-7 mt-2">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mt-2">
       <% if @post.post_images.present? %>
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 300, 250 %>
+          <%= attachment_image_tag image, :image, :fill, 400, 300 %>
         <% end %>
       <% else %>
         <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
       <% end %>
     </div>
 
-    <div class="col-5 mt-2">
+    <div class="col-sm-6 mt-2">
 
-      <table class="table table-sm">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td>
@@ -35,7 +35,7 @@
             <td><%= @post.purpose %></td>
           </tr>
           <tr>
-            <th scope="row">日付</th>
+            <th scope="row">投稿日</th>
             <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
           </tr>
           <tr>
@@ -44,25 +44,33 @@
           </tr>
         </tbody>
       </table>
-      
-      <!--自分の投稿にはいいねボタンが付かない-->
-      <% if @user.id != current_user.id %>
-        <%= render 'favorites/favorite' , post: @post %>
-      <% end %>
-      
-      
-      <% if @user.id == current_user.id %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
-        <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
-      <% end %>
 
-      <h4>地図</h4>
+
+
+      <div id="favorite-btn">
+        <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
+      </div>
+      
+      <div class="comment_count">
+        <%= render 'post_comments/comment_count',post: @post %>
+      </div>
+      
+      <div class="comment_index">
+        <%= render 'post_comments/comment_index', post: @post %>
+      </div>
+
+      <div class="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </div>
+
+
+      <h5>地図</h5>
       <div id='map'></div>
 
       <style>
       #map{
+        width: 400px;
         height: 300px;
-        width: 500px;
       }
       </style>
 
@@ -100,6 +108,20 @@
 
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+      
+      
+      
+      <table class="table">
+        <tr>
+          <% if @user.id == current_user.id %>
+            <td><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %></td>
+            <td><%= link_to "投稿を削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+        </tr>
+      </table>
+      
+      
+
 
     </div>
   </div>
