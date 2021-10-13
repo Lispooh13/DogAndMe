@@ -5,10 +5,8 @@
   
   <%= render 'error_messages', post: @post %>
   
-  <div class='row'>
-    <div class="mx-auto">
-
-     <%= form_with model:@post, local:true do |f| %>
+  <div class='row justify-content-center'>
+    <%= form_with model:@post, local:true do |f| %>
       <div class="form-group row mt-5">
         <div class="col-2"><%= f.label :image, "画像" %></div>
         <div class="col-10">
@@ -50,7 +48,6 @@
         <div class="col-2"></div>
         <div class="col-10"><%= f.submit '新規登録', class: 'btn btn-success' %></div>
       </div>
-     <% end %>
-   </div>
+    <% end %>
   </div>
 </div>

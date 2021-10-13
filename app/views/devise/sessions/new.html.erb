@@ -17,8 +17,11 @@
             <%= f.password_field :password, autocomplete: "current-password" , class:"form-control" ,placeholder: "パスワード"%>
           </div>
           
-          <%= f.submit "ログイン", class: "btn btn-block btn-info mt-5" %>
+          <%= f.submit "ログイン", class: "btn btn-block btn-info mt-5 mb-5" %>
         <% end %>
+        
+        
+        <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-block btn-secondary" %>
       </div>
     </div>
   </div>

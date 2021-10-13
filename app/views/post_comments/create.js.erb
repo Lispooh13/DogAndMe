@@ -1,0 +1,5 @@
+$(".comment_index").html("<%=escape_javascript(render partial:'post_comments/comment_index',locals: {post: @post})%>");
+
+$("#post_comment_comment").val('');
+
+$(".comment_count").html("<%=escape_javascript(render partial:'post_comments/comment_count',locals: {post: @post})%>");

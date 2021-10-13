@@ -10,7 +10,7 @@
       </td>
       <td><%= post_comment.comment %></td>
         <% if post_comment.user == current_user %>
-          <td><%= link_to "削除", post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-sm btn-danger destroy_book_12180", method: :delete ,local: true %></td>
+          <td><%= link_to "削除", post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-sm btn-danger destroy_book_12180", method: :delete ,remote: true %></td>
         <% end %>
     </tr>
   <% end %>

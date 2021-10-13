@@ -12,6 +12,8 @@
 
     <% end %>
 
-    <%= link_to post.place,post_path(post) %>
+    <%= link_to post.place,post_path(post) %><br>
+    <%= render 'favorites/favorite_btn' , post: post %>
+    <%= render 'post_comments/comment_count' , post: post %>
   </div>
 <% end %>
