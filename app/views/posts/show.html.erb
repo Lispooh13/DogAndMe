@@ -12,7 +12,7 @@
 
     <div class="col-5 mt-2">
 
-      <table class="table table-sm">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td>
@@ -35,7 +35,7 @@
             <td><%= @post.purpose %></td>
           </tr>
           <tr>
-            <th scope="row">日付</th>
+            <th scope="row">投稿日</th>
             <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
           </tr>
           <tr>
@@ -44,19 +44,16 @@
           </tr>
         </tbody>
       </table>
-      
-      <!--自分の投稿にはいいねボタンが付かない-->
-      <% if @user.id != current_user.id %>
-        <%= render 'favorites/favorite' , post: @post %>
-      <% end %>
-      
-      
-      <% if @user.id == current_user.id %>
-        <%= link_to "編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %>
-        <%= link_to "削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %>
-      <% end %>
+          <!--自分の投稿にはいいねボタンが付かない-->
+      <div class="favorite-btn">
+        <% if @user.id != current_user.id %>
+          <%= render 'favorites/favorite_btn' , post: @post %>
+        <% end %>
+      </div>
 
-      <h4>地図</h4>
+      
+
+      <h5>地図</h5>
       <div id='map'></div>
 
       <style>
@@ -100,6 +97,29 @@
 
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+      
+      
+      
+      <table class="table">
+        <tr>
+          <% if @user.id == current_user.id %>
+            <td><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-sm btn-success " %></td>
+            <td><%= link_to "投稿を削除する", post_path(@post), class: "btn btn-sm btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+        </tr>
+      </table>
+      
+      <h5>コメント欄</h5>
+
+        <div class="comment_index">
+          <%= render 'post_comments/comment_index', post: @post %>
+        </div>
+
+        <div class="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+        </div>
+
+
 
     </div>
   </div>
