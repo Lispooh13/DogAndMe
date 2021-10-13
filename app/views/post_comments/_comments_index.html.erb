@@ -1,0 +1,17 @@
+<table>
+  <% post.post_comments.each do |post_comment| %>
+    <% post_comment_user = post_comment.user %>
+    <tr>
+      <td>
+        <%= link_to user_path(post_comment_user) local: true do%>
+           <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60,fallback: "no_image.jpg",size: '60x60'%>
+           <%= post_comment_user.name %>
+         <% end %>
+      </td>
+      <td><%= post_comment.comment %></td>
+      <% if post_comment.user == current_user %>
+         <td><%= link_to "削除", post_post_comment_path(post_comment.post_id, post_comment.id), class: "btn btn-sm btn-danger destroy_book_12180", method: :delete ,local: true %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
