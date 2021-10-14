@@ -13,7 +13,9 @@
     <% end %>
 
     <%= link_to post.place,post_path(post) %><br>
-    <%= render 'favorites/favorite_btn' , post: post %>
+    <div class="favorite_btn_<%= post.id %>">
+      <%= render partial: 'favorites/favorite_btn', locals: { post: post }%>
+    </div>
     <%= render 'post_comments/comment_count' , post: post %>
   </div>
 <% end %>

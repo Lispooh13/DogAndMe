@@ -47,14 +47,14 @@
 
 
 
-      <div id="favorite-btn">
+      <div class="favorite_btn_<%= @post.id %>">
         <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
       </div>
-      
+
       <div class="comment_count">
         <%= render 'post_comments/comment_count',post: @post %>
       </div>
-      
+
       <div class="comment_index">
         <%= render 'post_comments/comment_index', post: @post %>
       </div>
@@ -108,9 +108,9 @@
 
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
-      
-      
-      
+
+
+
       <table class="table">
         <tr>
           <% if @user.id == current_user.id %>
@@ -119,8 +119,8 @@
           <% end %>
         </tr>
       </table>
-      
-      
+
+
 
 
     </div>

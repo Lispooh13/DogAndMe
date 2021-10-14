@@ -3,9 +3,9 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    if @post.user_id != current_user.id   # 投稿者本人はいいね不可
+    # if @post.user_id != current_user.id   # 投稿者本人はいいね不可
        @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
-    end
+    # end
 
     #@post = Post.find(params[:post_id])
   end

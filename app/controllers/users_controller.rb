@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
+  before_action :ensure_correct_user, only:[:edit]
 
+  def index
+    @user = current_user
+    @users = User.page(params[:page])
+  end
+ 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).reverse_order
