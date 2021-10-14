@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center align-items-center">
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-icon.jpg" %>
+</div>
+
+<div class= "mt-4">
+  <%= render 'relationships/follow_btn', user: user %>
+  <% if user.id == current_user.id %>
+    <%= link_to "マイページを編集する", edit_user_path(user), class: "btn btn-block btn-sm btn-light" %>
+  <% end %>
+</div>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">名前</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">自己紹介</th>
+      <td><%= user.introduction %></td>
+    </tr>
+    <tr>
+      <th>フォロー中</th>
+      <th><%= link_to user_followings_path(user) do %>
+      <%= user.followings.count %>
+      <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>フォロワー</th>
+      <th><%= link_to user_followers_path(user) do %>
+      <%= user.followers.count %>
+      <% end %>
+      </th>
+    </tr>
+    
+  </tbody>
+</table>

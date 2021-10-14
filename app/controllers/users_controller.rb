@@ -1,14 +1,19 @@
 class UsersController < ApplicationController
 
+  def index
+    @user = current_user
+    @users = User.page(params[:page])
+  end
+
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).reverse_order
-    
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(8)
+
     # ログイン中のユーザーのいいねのpost_idカラムを取得
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
     # postsテーブルから、いいね済みのレコードを取得
     @favorite_list = Post.find(favorites)
-    
+
   end
 
 

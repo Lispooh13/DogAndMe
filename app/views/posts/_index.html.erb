@@ -1,19 +1,22 @@
+<!--投稿一覧-->
 <% posts.each do |post| %>
   <div class="col-12, m-1">
     <%= link_to post_path(post), class: "link" do %>
 
       <% if post.post_images.present? %>
         <% post.post_images.first(1).each do |image| %>
-          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
+          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '190x150'%><br>
         <% end %>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
+        <%= image_tag 'no-image-icon.jpg', size: '190x150' %><br>
       <% end %>
 
     <% end %>
 
-    <%= link_to post.place,post_path(post) %><br>
-    <%= render 'favorites/favorite_btn' , post: post %>
+    <%= link_to post.place, post_path(post) %><br>
+    <div class="favorite_btn_<%= post.id %>">
+      <%= render partial: 'favorites/favorite_btn', locals: { post: post }%>
+    </div>
     <%= render 'post_comments/comment_count' , post: post %>
   </div>
 <% end %>

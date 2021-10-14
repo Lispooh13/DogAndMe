@@ -14,3 +14,11 @@
  *= require_self
  */
  @import "bootstrap";
+
+.pagination>li>a:hover {        
+  border-radius: 15px;
+}
+
+.pagination {
+  justify-content: center;
+}
