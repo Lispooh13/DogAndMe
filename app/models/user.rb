@@ -7,7 +7,30 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  
+  #フォローしているuser達
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  #フォローされているuser達
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
+  
+  #ユーザーをフォローする
+  def follow(user_id)
+    relationships.create(follow_id: user_id)
+  end
 
+  #ユーザーのフォローを外す
+  def unfollow(user_id)
+    relationships.find_by(follow_id: user_id).destroy
+  end
+
+  #フォローしていればtrueを返す
+  def following?(user)
+    followings.include?(user)
+  end
+  
+  
   attachment :profile_image
 
   validates :name, presence: true

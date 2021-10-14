@@ -1,3 +1,4 @@
+<!--投稿一覧-->
 <% posts.each do |post| %>
   <div class="col-12, m-1">
     <%= link_to post_path(post), class: "link" do %>
@@ -12,7 +13,7 @@
 
     <% end %>
 
-    <%= link_to post.place,post_path(post) %><br>
+    <%= link_to post.place, post_path(post) %><br>
     <div class="favorite_btn_<%= post.id %>">
       <%= render partial: 'favorites/favorite_btn', locals: { post: post }%>
     </div>
