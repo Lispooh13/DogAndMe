@@ -1,40 +1,15 @@
-<div class='container'>
+<div class="container px-5 px-sm-0">
   <div class="row mt-4">
-    <div class="col-2">
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-icon.jpg" %>
+    <div class="col-md-3">
+      <%=render "info" ,user: @user %>
     </div>
-
-    <div class="col-10">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row">名前</th>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <th scope="row">自己紹介</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-          <tr>
-            <td><%= render 'relationships/follow_btn', user: @user %></td>
-            <td>
-              <% if @user.id == current_user.id %>
-                <%= link_to "マイページ編集", edit_user_path(@user), class: "btn btn-sm btn-success" %>
-              <% end %>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-  </div>
-
-  <h3>投稿一覧</h3>
-  <div class="row m-4">
-    <%= render 'posts/index', posts: @posts %>
-  </div>
-  <%= paginate @posts %>
+  
+    <div class="col-md-9">
+      <h3>投稿一覧</h3>
+      <div class="row m-4">
+        <%= render "posts/index", posts: @posts %>
+      </div>
+      <%= paginate @posts %>
 
   <h3>いいね一覧</h3>
   <div class="row m-4">

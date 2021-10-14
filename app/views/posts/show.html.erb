@@ -1,17 +1,6 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 mt-2">
-      <% if @post.post_images.present? %>
-        <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 400, 300 %>
-        <% end %>
-      <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
-      <% end %>
-    </div>
-
-    <div class="col-sm-6 mt-2">
-
+<div class="container px-5 px-sm-0">
+  <div class="row mt-4">
+    <div class="col-md-4">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -44,7 +33,29 @@
           </tr>
         </tbody>
       </table>
+      <table class="table">
+        <tr>
+          <% if @user.id == current_user.id %>
+            <td><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-success " %></td>
+            <td><%= link_to "投稿を削除する", post_path(@post), class: "btn btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+        </tr>
+      </table>
 
+    </div>
+
+    <div class="col-md-8">
+      <% if @post.post_images.present? %>
+        <% @post.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image, :fill, 400, 300 %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
+      <% end %>
+    </div>
+
+
+      
 
 
       <div class="favorite_btn_<%= @post.id %>">
@@ -111,14 +122,7 @@
 
 
 
-      <table class="table">
-        <tr>
-          <% if @user.id == current_user.id %>
-            <td><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-success " %></td>
-            <td><%= link_to "投稿を削除する", post_path(@post), class: "btn btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
-          <% end %>
-        </tr>
-      </table>
+      
 
 
 
