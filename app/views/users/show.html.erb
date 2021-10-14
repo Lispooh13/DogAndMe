@@ -6,16 +6,16 @@
   
     <div class="col-md-9">
       <h3>投稿一覧</h3>
-      <div class="row m-4">
+      <div class="row m-3">
         <%= render "posts/index", posts: @posts %>
       </div>
       <%= paginate @posts %>
 
-  <h3>いいね一覧</h3>
-  <div class="row m-4">
-    <% if @favorite_list.present? %>
-      <% @favorite_list.each do |post| %>
-        <div class="col-12, m-1">
+      <h3>いいね一覧</h3>
+      <div class="row m-4">
+        <% if @favorite_list.present? %>
+          <% @favorite_list.each do |post| %>
+            <div class="col-12, m-1">
           <%= link_to post_path(post), class: "link" do %>
 
             <% if post.post_images.present? %>

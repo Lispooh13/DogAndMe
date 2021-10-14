@@ -54,79 +54,67 @@
       <% end %>
     </div>
 
-
-      
-
-
-      <div class="favorite_btn_<%= @post.id %>">
-        <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
-      </div>
-
-      <div class="comment_count">
-        <%= render 'post_comments/comment_count',post: @post %>
-      </div>
-
-      <div class="comment_index">
-        <%= render 'post_comments/comment_index', post: @post %>
-      </div>
-
-      <div class="comment">
-        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
-      </div>
-
-
-      <h5>地図</h5>
-      <div id='map'></div>
-
-      <style>
-      #map{
-        width: 400px;
-        height: 300px;
-      }
-      </style>
-
-      <script>
-        let map
-        let geocoder
-
-        function initMap(){
-          // geocoderを初期化
-          geocoder = new google.maps.Geocoder();
-
-          map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 15
-          });
-            // 住所入力を取得
-          let inputAddress = `${gon.post.address}`;
-
-          // geocodingしたあとmapを移動
-          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-            if (status == 'OK') {
-        // map.setCenterで地図が移動
-              map.setCenter(results[0].geometry.location);
-
-        // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-            } else {
-              alert('Geocode was not successful for the following reason: ' + status);
-            }
-          });
-        }
-
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
-
-
-
-      
-
-
-
-
+    <div class="favorite_btn_<%= @post.id %>">
+      <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
     </div>
+
+    <div class="comment_count">
+      <%= render 'post_comments/comment_count',post: @post %>
+    </div>
+
+    <div class="comment_index">
+      <%= render 'post_comments/comment_index', post: @post %>
+    </div>
+
+    <div class="comment">
+      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+    </div>
+
+
+    <h5>地図</h5>
+    <div id='map'></div>
+
+    <style>
+    #map{
+      width: 400px;
+      height: 300px;
+    }
+    </style>
+
+    <script>
+      let map
+      let geocoder
+
+      function initMap(){
+        // geocoderを初期化
+        geocoder = new google.maps.Geocoder();
+
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 15
+        });
+          // 住所入力を取得
+        let inputAddress = `${gon.post.address}`;
+
+        // geocodingしたあとmapを移動
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+      // map.setCenterで地図が移動
+            map.setCenter(results[0].geometry.location);
+
+      // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+
   </div>
 </div>
