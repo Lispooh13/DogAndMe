@@ -15,7 +15,7 @@
           <% @users.each do |user| %>
             <tr>
               <td>
-                <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" ,size: '60x60' ,class: "rounded-circle"%>
+                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" ,size: '60x60' ,class: "rounded-circle"%>
               </td>
               <td class="align-middle"><%= link_to user.name, user_path(user) %></td>
               <td class="align-middle">フォロー数: <%= user.followings.count %></td>

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
-    get :favorites, on: :collection
+    member do
+      get :favorites
+    end
   end
   
   

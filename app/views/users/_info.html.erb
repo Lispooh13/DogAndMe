@@ -1,15 +1,8 @@
 <!--ユーザー情報-->
-  <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center mb-2">
     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no-image-icon.jpg" ,class: "rounded-circle"%>
   </div>
-  
-  <div class= "mt-4">
-    <%= render 'relationships/follow_btn', user: user %>
-    <% if user.id == current_user.id %>
-      <%= link_to "マイページを編集する", edit_user_path(user), class: "btn btn-block btn-sm btn-light" %>
-    <% end %>
-  </div>
-  
+
   <table class="table">
     <tbody>
       <tr>
@@ -22,7 +15,7 @@
       </tr>
       <tr>
         <th>フォロー</th>
-        <th class=><%= link_to user_followings_path(user) do %>
+        <th><%= link_to user_followings_path(user) do %>
         <%= user.followings.count %>
         <% end %>
         </th>
