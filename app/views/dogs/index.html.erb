@@ -1,0 +1,52 @@
+<div class="container px-5 px-sm-0">
+  <div class="row mt-4">
+    <div class="col-md-3">
+
+      <%# if @user.id == current_user.id %>
+        <%= form_with model: @dogs, url: dogs_path, local:true do |f| %>
+        <div class="form-group">
+          <label class="dog_name_form">わんちゃんの名前</label>
+          <%= f.text_field :name , :placeholder => "ラッキー", class: "form-control"%>
+        </div>
+
+        <div class="form-group">
+           <label class="dog_type_form">犬種</label>
+              <%= f.text_field :dog_type ,class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+           <label class="dog_size_form">大きさ</label>
+              <%= f.select :dog_size, Dog.dog_sizes.keys, {prompt: "選択してください"}, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+              <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
+        </div>
+      <% end %>
+    <%# end %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h3>わんちゃん一覧</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>犬種</th>
+            <th>大きさ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @dogs.each do |dog| %>
+            <tr>
+              <td><%= dog.name %></td>
+              <td><%= dog.dog_type %></td>
+              <td><%= dog.dog_size %></td>
+              <td><%= link_to "削除", dog_path(dog), method: :delete,class: "btn btn-outline-dark btn-sm", data: { confirm: "本当に削除しますか？" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

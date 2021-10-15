@@ -1,3 +1,4 @@
+<!--投稿詳細-->
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
     <div class="col-md-4">
@@ -41,36 +42,28 @@
           <% end %>
         </tr>
       </table>
+      
+      <!--いいねボタン-->
+      <div class="favorite_btn_<%= @post.id %>">
+        <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
+      </div>
+      
+      <!--コメント件数-->
+      <div class="comment_count">
+        <%= render 'post_comments/comment_count',post: @post %>
+      </div>
+      
+      <!--コメント一覧-->
+      <div class="comment_index">
+        <%= render 'post_comments/comment_index', post: @post %>
+      </div>
+      
+      <!--コメントフォーム-->
+      <div class="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </div>
 
-    </div>
-
-    <div class="col-md-8">
-      <% if @post.post_images.present? %>
-        <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 400, 300 %>
-        <% end %>
-      <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
-      <% end %>
-    </div>
-
-    <div class="favorite_btn_<%= @post.id %>">
-      <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
-    </div>
-
-    <div class="comment_count">
-      <%= render 'post_comments/comment_count',post: @post %>
-    </div>
-
-    <div class="comment_index">
-      <%= render 'post_comments/comment_index', post: @post %>
-    </div>
-
-    <div class="comment">
-      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
-    </div>
-
-
+    
     <h5>地図</h5>
     <div id='map'></div>
 
@@ -116,5 +109,17 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
 
+
+
+    </div>
+    <div class="col-md-8 pr-0">
+      <% if @post.post_images.present? %>
+        <% @post.post_images.each do |image| %>
+          <%= attachment_image_tag image, :image, :fill, 700, 500 %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
+      <% end %>
+    </div>
   </div>
 </div>

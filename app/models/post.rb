@@ -11,12 +11,14 @@ class Post < ApplicationRecord
 
   enum purpose:{"遊ぶ": 0, "写真を撮る": 1, "飲食": 2, "買い物": 3, "泊まる": 4, "その他": 5}
 
+#バリデーション
   validates :place, presence: true
   validates :address, presence: true
   validates :purpose, presence: true
   validates :body, presence: true
 
 
+#場所名と住所、感想からの部分検索
   def self.search(search)
     if search != ""
       Post.where(['place LIKE(?) OR address LIKE(?) OR purpose LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%","%#{search}%"])

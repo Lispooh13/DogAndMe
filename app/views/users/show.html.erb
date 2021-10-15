@@ -1,9 +1,11 @@
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
-    
+    <div class="col-md-3">
       <%=render "info" ,user: @user %>
-    
-  
+      <%= link_to "わんちゃん", dogs_path, class: "btn" %>
+
+    </div>
+
     <div class="col-md-9">
       <h3>投稿一覧</h3>
       <div class="row m-3">
