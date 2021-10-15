@@ -1,53 +1,38 @@
-<div class='container'>
-  <div class='row mt-4'>
-    <h3>新規投稿</h3>
-  </div>
-  
-  <%= render 'error_messages', post: @post %>
-  
-  <div class='row justify-content-center'>
-    <%= form_with model:@post, local:true do |f| %>
-      <div class="form-group row mt-5">
-        <div class="col-2"><%= f.label :image, "画像" %></div>
-        <div class="col-10">
-          <%= f.attachment_field :post_images_images, multiple: true %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto text-center shadow rounded px-0 my-3">
+      <h3 class="bg-info py-3 text-white">新規投稿</h3>
+      <%= render "error_messages", post: @post %>
+      <%= form_with model:@post, local:true do |f| %>
+      <div class="px-5 py-3">
+        <div class="form-group row">
+          <%= f.label :image, "画像" %>
+          <%= f.attachment_field :post_images_images, multiple: true , class: "form-control-file" %>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-2"><%= f.label :place, "場所名" %></div>
-        <div class="col-10">
-          <%= f.text_field :place, autofocus: true, :placeholder => "◯◯公園", class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :place, "場所名" %>
+          <%= f.text_field :place, autofocus: true, :placeholder => "◯◯公園", class: "form-control" %>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-2"><%= f.label :address, "住所" %></div>
-        <div class="col-10">
-          <%= f.text_field :address, class: 'form-control'  %>
+        <div class="form-group row">
+          <%= f.label :address, "住所" %>
+            <%= f.text_field :address, class: "form-control"  %>
+          </div>
+
+        <div class="form-group row">
+          <%= f.label :purpose, "主な目的" %>
+          <%= f.select :purpose, Post.purposes.keys, {prompt: "選択してください"}, class: "form-control" %>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-2"><%= f.label :purpose, "主な目的" %></div>
-        <div class="col-10">
-          <%= f.select :purpose, Post.purposes.keys, {prompt: "選択してください"}, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :body, "感想" %>
+          <%= f.text_area :body, :placeholder => "とても広い敷地で、遊び回るのに最適な公園でした", class: "form-control" %>
         </div>
+
+        <%= f.submit '投稿', class: "btn btn-block btn-success mt-5 mb-3" %>
+      <% end %>
       </div>
-
-      <div class="form-group row">
-        <div class="col-2"><%= f.label :body, "感想" %></div>
-        <div class="col-10">
-          <%= f.text_area :body, :placeholder => "とても広い敷地で、遊び回るのに最適な公園でした", class: 'form-control' ,size: "90x7" %>
-        </div>
-      </div>
-
-
-
-      <div class="form-group row">
-        <div class="col-2"></div>
-        <div class="col-10"><%= f.submit '新規登録', class: 'btn btn-success' %></div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
