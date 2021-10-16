@@ -14,8 +14,10 @@
  *= require_self
  */
  @import "bootstrap";
+ @import "slick-theme";
+ @import "slick";
 
-.pagination>li>a:hover {        
+.pagination>li>a:hover {
   border-radius: 15px;
 }
 
@@ -28,11 +30,11 @@
  width: 20px;
  height: 20px;
  font-size: 20px;
- color: #808080; 
+ color: #808080;
  margin-left: 10px;
  }
- 
- .favorite-btn {
+
+ .unfavorite-btn {
  text-decoration: none;
  width: 20px;
  height: 20px;
@@ -40,11 +42,20 @@
  color: #e54747;
  margin-left: 10px;
  }
- 
+
  .comment-mark {
   width: 20px;
  height: 20px;
  font-size: 20px;
  color: #000000;
- margin-left: 10px; 
+ margin-left: 10px;
  }
+
+.favorites_post{
+ text-decoration: none;
+ color: #e54747;
+}
+
+.dog_link{
+ color: #fa9432;
+}
