@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    resources :dogs, only:[:index, :create, :destroy]
     member do
       get :favorites
     end
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   
-  resources :dogs, only:[:index, :create, :destroy]
+  
   
   get 'search' => "searches#search"
 

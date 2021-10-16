@@ -2,11 +2,11 @@
   <div class="row mt-4">
     <div class="col-md-3">
 
-      <%# if @user.id == current_user.id %>
-        <%= form_with model: @dogs, url: dogs_path, local:true do |f| %>
+      <% if @user.id == current_user.id %>
+        <%= form_with model: @dog, url: user_dogs_path(@user), local:true do |f| %>
         <div class="form-group">
           <label class="dog_name_form">わんちゃんの名前</label>
-          <%= f.text_field :name , :placeholder => "ラッキー", class: "form-control"%>
+          <%= f.text_field :name , class: "form-control"%>
         </div>
 
         <div class="form-group">
@@ -23,7 +23,7 @@
               <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
         </div>
       <% end %>
-    <%# end %>
+    <% end %>
     </div>
     <div class="col-md-8 offset-md-1">
       <h3>わんちゃん一覧</h3>
@@ -39,10 +39,14 @@
         <tbody>
           <% @dogs.each do |dog| %>
             <tr>
-              <td><%= dog.name %></td>
-              <td><%= dog.dog_type %></td>
-              <td><%= dog.dog_size %></td>
-              <td><%= link_to "削除", dog_path(dog), method: :delete,class: "btn btn-outline-dark btn-sm", data: { confirm: "本当に削除しますか？" } %></td>
+              <td class="align-middle"><%= dog.name %></td>
+              <td class="align-middle"><%= dog.dog_type %></td>
+              <td class="align-middle"><%= dog.dog_size %></td>
+              <td class="align-middle">
+                <% if @user.id == current_user.id %>
+                  <%= link_to "削除", user_dog_path(@user,dog), method: :delete,class: "btn btn-sm btn-outline-danger", data: { confirm: "本当にわんちゃんの情報を削除しますか？" } %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

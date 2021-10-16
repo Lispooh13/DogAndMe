@@ -2,20 +2,19 @@ class DogsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #投稿している人の、dogを持ってきたい
-    @user = current_user
     @dog = Dog.new
-    @dogs = @user.dogs
+    @dogs = Dog.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def create
     @dog = Dog.new(dog_params)
-    @dog.user_id = current_user.id
+    @dog.user_id = params[:user_id]
     if @dog.save
-      redirect_to dogs_path
+      redirect_to user_dogs_path(current_user)
     else
-      @user = current_user
       @dog = Dog.new
+      @user = User.find(params[:user_id])
       @dogs = @user.dogs
       render :index
     end
@@ -24,7 +23,7 @@ class DogsController < ApplicationController
   def destroy
     dog = Dog.find(params[:id])
     dog.destroy
-    redirect_to dogs_path
+    redirect_to user_dogs_path(current_user)
   end
 
   private
