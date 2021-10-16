@@ -7,13 +7,11 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   
-  #post関連
   resources :posts do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
   
-  #user関連
   resources :users, only: [:index, :show, :edit, :update] do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
@@ -23,10 +21,9 @@ Rails.application.routes.draw do
     end
   end
   
-  
   resources :relationships, only: [:create, :destroy]
   
-  
+  resources :notifications, only: [:index]
   
   get 'search' => "searches#search"
 

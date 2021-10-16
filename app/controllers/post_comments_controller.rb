@@ -7,6 +7,7 @@ class PostCommentsController < ApplicationController
     @post_comment.post_id = @post.id
     @post_comment.user_id = current_user.id
     if @post_comment.save
+      # 通知メソッドを書くと非同期されない（泣）
     else
       redirect_back(fallback_location: root_path)
     end

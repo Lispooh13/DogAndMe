@@ -11,7 +11,7 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     @dog.user_id = params[:user_id]
     if @dog.save
-      redirect_to user_dogs_path(current_user)
+      redirect_to request.referer
     else
       @dog = Dog.new
       @user = User.find(params[:user_id])
