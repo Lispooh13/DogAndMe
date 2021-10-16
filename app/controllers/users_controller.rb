@@ -8,12 +8,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(8)
-
-    # ログイン中のユーザーのいいねのpost_idカラムを取得
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    # postsテーブルから、いいね済みのレコードを取得
-    @favorite_list = Post.find(favorites)
-
+  end
+  
+  #いいね一覧
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorites_posts = Post.find(favorites)
   end
 
 
@@ -31,13 +32,11 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
-
- private
-
- def user_params
-   params.require(:user).permit(:name, :profile_image, :introduction)
- end
-
+  
+  private
+    def user_params
+      params.require(:user).permit(:name, :profile_image, :introduction)
+    end
+    
 
 end

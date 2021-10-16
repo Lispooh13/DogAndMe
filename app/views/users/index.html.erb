@@ -6,18 +6,18 @@
           <tr>
             <th></th>
             <th>名前</th>
-            <th colspan="3"></th>
-            <th></th>
+            <th>フォロー数</th>
+            <th>フォロワー数</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg" ,size: '50x50'%></td>
-            <td><%= link_to user.name , user_path(user) %></td>
-            <td><%= render 'relationships/follow_count', user: user %></td>
-            <td><%= render 'relationships/follow_btn', user: user %></td>
+            <td><%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '50x50' ,class: "rounded-circle"%></td>
+            <td class="align-middle"><%= link_to user.name , user_path(user) %></td>
+            <%= render 'relationships/follow_count', user: user %>
+            <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
           </tr>
           <% end %>
         </tbody>

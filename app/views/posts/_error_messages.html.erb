@@ -1,7 +1,9 @@
-<% if post.errors.any? %>
+<div class="text-left">
+  <% if post.errors.any? %>
     <ul>
       <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
     </ul>
   <% end %>
+</div>

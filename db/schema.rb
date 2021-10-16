@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_054335) do
+ActiveRecord::Schema.define(version: 2021_10_15_135134) do
+
+  create_table "dogs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "dog_type", null: false
+    t.integer "dog_size", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -32,20 +41,20 @@ ActiveRecord::Schema.define(version: 2021_10_14_054335) do
   end
 
   create_table "post_images", force: :cascade do |t|
-    t.integer "post_id"
-    t.string "image_id"
+    t.integer "post_id", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "place"
-    t.string "address"
-    t.integer "purpose"
+    t.integer "user_id", null: false
+    t.string "place", null: false
+    t.string "address", null: false
+    t.integer "purpose", default: 0, null: false
     t.float "latitude"
     t.float "longitude"
-    t.text "body"
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +75,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_054335) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.string "profile_image_id"
     t.text "introduction"
     t.datetime "created_at", null: false

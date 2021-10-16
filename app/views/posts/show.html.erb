@@ -1,3 +1,4 @@
+<!--投稿詳細-->
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
     <div class="col-md-4">
@@ -6,10 +7,10 @@
           <tr>
             <td>
               <%= link_to user_path(@user) do %>
-                <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no-image-icon.jpg" %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no-image-icon.jpg" ,class: "rounded-circle" %>
               <% end %>
-              </td>
-            <td><%= link_to @user.name, user_path(@user) %></td>
+            </td>
+            <td class="align-middle"><%= link_to @user.name, user_path(@user) %></td>
           </tr>
           <tr>
             <th scope="row">場所名</th>
@@ -33,88 +34,93 @@
           </tr>
         </tbody>
       </table>
-      <table class="table">
-        <tr>
-          <% if @user.id == current_user.id %>
-            <td><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-success " %></td>
-            <td><%= link_to "投稿を削除する", post_path(@post), class: "btn btn-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
-          <% end %>
-        </tr>
-      </table>
 
+      <!--いいねボタン-->
+      <div class="favorite_btn_<%= @post.id %>">
+        <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
+      </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-7 offset-md-1">
       <% if @post.post_images.present? %>
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 400, 300 %>
+          <%= attachment_image_tag image, :image, :fill, 500, 300 %>
         <% end %>
       <% else %>
         <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
       <% end %>
     </div>
+  </div>
 
-    <div class="favorite_btn_<%= @post.id %>">
-      <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <!--コメント件数-->
+      <div class="comment_count">
+        <%= render 'post_comments/comment_count',post: @post %>
+      </div>
+
+      <!--コメント一覧-->
+      <div class="comment_index">
+        <%= render 'post_comments/comment_index', post: @post %>
+      </div>
+
+      <!--コメントフォーム-->
+      <div class="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </div>
+
+      <% if @user.id == current_user.id %>
+        <%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success " %></td>
+        <%= link_to "投稿を削除する", post_path(@post), class: "btn btn-outline-danger" , method: :delete ,"data-confirm" => "本当に削除しますか？" %></td>
+      <% end %>
     </div>
+    <div class="col-md-8">
 
-    <div class="comment_count">
-      <%= render 'post_comments/comment_count',post: @post %>
-    </div>
+      <h5>地図</h5>
+      <div id='map'></div>
 
-    <div class="comment_index">
-      <%= render 'post_comments/comment_index', post: @post %>
-    </div>
-
-    <div class="comment">
-      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
-    </div>
-
-
-    <h5>地図</h5>
-    <div id='map'></div>
-
-    <style>
-    #map{
-      width: 400px;
-      height: 300px;
-    }
-    </style>
-
-    <script>
-      let map
-      let geocoder
-
-      function initMap(){
-        // geocoderを初期化
-        geocoder = new google.maps.Geocoder();
-
-        map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 15
-        });
-          // 住所入力を取得
-        let inputAddress = `${gon.post.address}`;
-
-        // geocodingしたあとmapを移動
-        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-          if (status == 'OK') {
-      // map.setCenterで地図が移動
-            map.setCenter(results[0].geometry.location);
-
-      // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
+      <style>
+      #map{
+        width: 400px;
+        height: 300px;
       }
+      </style>
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+      <script>
+        let map
+        let geocoder
+
+        function initMap(){
+          // geocoderを初期化
+          geocoder = new google.maps.Geocoder();
+
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 15
+          });
+            // 住所入力を取得
+          let inputAddress = `${gon.post.address}`;
+
+          // geocodingしたあとmapを移動
+          geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+            if (status == 'OK') {
+        // map.setCenterで地図が移動
+              map.setCenter(results[0].geometry.location);
+
+        // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+              var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+              });
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
+    </div>
 
   </div>
 </div>
