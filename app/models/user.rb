@@ -43,9 +43,9 @@ class User < ApplicationRecord
 
   def create_notification_follow!(current_user)
     # フォローされているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    notifications = Notification.where(visitor_id: current_user.id, visited_id: id, action: 'follow')
     # フォローされていない場合、同じ通知レコードが存在しないときのみ、通知レコードを作成
-    if temp.blank?
+    if notifications.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
         action: 'follow'
@@ -54,5 +54,11 @@ class User < ApplicationRecord
     end
   end
 
+# 未確認の通知を検索するメソッド
+  def unchecked_notifications
+    
+    passive_notifications.where(checked: false)
+    
+  end
 
 end
