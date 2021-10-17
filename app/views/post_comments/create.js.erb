@@ -1,5 +1,5 @@
-$(".comment_index").html("<%=escape_javascript(render partial:'post_comments/comment_index',locals: {post: @post})%>");
+$(".comment-index").html("<%=escape_javascript(render partial:'post_comments/comment_index',locals: {post: @post})%>");
 
-$("#post_comment_comment").val('');
+$("#post-comment-comment").val('');
 
-$(".comment_count").html("<%=escape_javascript(render partial:'post_comments/comment_count',locals: {post: @post})%>");
+$(".comment-count").html("<%=escape_javascript(render partial:'post_comments/comment_count',locals: {post: @post})%>");

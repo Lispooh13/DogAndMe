@@ -17,5 +17,15 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+/*global $*/
+
+
+$(function() {
+  $('.slider').slick({
+    dots: true,
+    arrows: false,  //ボタン非表示
+    autoplay: true, //自動再生
+    autoplaySpeed: 4000, //再生スピード
+  });
+});

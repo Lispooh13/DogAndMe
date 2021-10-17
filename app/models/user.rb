@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :dogs, dependent: :destroy
 
-
+# フォロー・フォロワー
   #フォローしているuser達
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
@@ -34,5 +34,31 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+
+# 通知機能
+  # 自分からの通知
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # 相手からの通知
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+  def create_notification_follow!(current_user)
+    # フォローされているか検索
+    notifications = Notification.where(visitor_id: current_user.id, visited_id: id, action: 'follow')
+    # フォローされていない場合、同じ通知レコードが存在しないときのみ、通知レコードを作成
+    if notifications.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
+# 未確認の通知を検索するメソッド
+  def unchecked_notifications
+    
+    passive_notifications.where(checked: false)
+    
+  end
 
 end
