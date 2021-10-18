@@ -1,33 +1,35 @@
-<div class="container px-4 pt-4">
-  <h3>ユーザー一覧</h3>
-  <div class="row mt-4">
-    <div class="col-sm-9">
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th></th>
-            <th>ニックネーム</th>
-            <th>フォロー数</th>
-            <th>フォロワー数</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
-              <% end %>
-              </td>
-            <td class="align-middle"><%= link_to user.name , user_path(user) %></td>
-            <%= render 'relationships/follow_count', user: user %>
-            <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class ="UserAria">
+  <div class="container px-4 pt-4 ">
+    <h3>ユーザー一覧</h3>
+    <div class="row mt-4">
+      <div class="col-sm-9">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ニックネーム</th>
+              <th>フォロー数</th>
+              <th>フォロワー数</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
+                <% end %>
+                </td>
+              <td class="align-middle"><%= link_to user.name , user_path(user) %></td>
+              <%= render 'relationships/follow_count', user: user %>
+              <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  <%= paginate @users %>
 </div>
-<%= paginate @users %>

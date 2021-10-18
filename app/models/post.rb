@@ -10,19 +10,19 @@ class Post < ApplicationRecord
 #PostImageのimageを取得
   accepts_attachments_for :post_images, attachment: :image
 
-  enum purpose:{"遊ぶ": 0, "写真を撮る": 1, "飲食": 2, "買い物": 3, "泊まる": 4, "その他": 5}
-
+  enum category:{"公園": 0, "自然": 1, "ドッグラン": 2, "レストラン": 3, "カフェ": 4, "ショップ": 5, "宿泊施設": 6, "複合施設": 7, "牧場": 8, "道の駅": 9,"遊園地": 10,"美術館/博物館": 11,"その他": 12}
+  enum purpose:{"遊ぶ": 0, "写真を撮る": 1, "飲食": 2, "買い物": 3, "泊まる": 4}
 #バリデーション
   validates :place, presence: true
   validates :address, presence: true
-  validates :purpose, presence: true
+  validates :category, presence: true
   validates :body, presence: true
 
 
-#場所名と住所、感想からの部分検索
+#場所名と住所、説明からの部分検索
   def self.search(search)
     if search != ""
-      Post.where(['place LIKE(?) OR address LIKE(?) OR purpose LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%","%#{search}%"])
+      Post.where(['place LIKE(?) OR address LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%"])
     else
       Post.all
     end

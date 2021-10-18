@@ -4,8 +4,9 @@ ja:
       post:
         place: 場所名
         address: 住所
+        category: カテゴリー
         purpose: 主な目的
-        body: 感想
+        body: 説明
       user:
         name: 名前
   views:

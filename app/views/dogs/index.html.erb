@@ -5,7 +5,7 @@
       <% if @user.id == current_user.id %>
         <%= form_with model: @dog, url: user_dogs_path(@user), local:true do |f| %>
         <div class="form-group">
-          <label class="dog_name_form">わんちゃんのお名前</label>
+          <label class="dog_name_form">わんちゃんの名前</label>
           <%= f.text_field :name , class: "form-control"%>
         </div>
 
@@ -30,7 +30,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>お名前</th>
+            <th>Name</th>
             <th>犬種</th>
             <th>大きさ</th>
             <th></th>

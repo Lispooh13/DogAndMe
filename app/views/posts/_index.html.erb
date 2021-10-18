@@ -5,10 +5,10 @@
 
       <% if post.post_images.present? %>
         <% post.post_images.first(1).each do |image| %>
-          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '190x150'%><br>
+          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image.jpg",size: '190x150'%><br>
         <% end %>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '190x150' %><br>
+        <%= image_tag 'no-image.jpg', size: '190x150' %><br>
       <% end %>
 
     <% end %>

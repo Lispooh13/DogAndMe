@@ -2,12 +2,12 @@
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
     <div class="col-md-4">
-      <table class="table table-borderless">
+      <table class="table">
         <tbody>
           <tr>
             <td>
               <%= link_to user_path(@user) do %>
-                <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg" ,class: "rounded-circle" %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg" ,class: "rounded-circle" %>
               <% end %>
             </td>
             <td class="align-middle"><%= link_to @user.name, user_path(@user) %></td>
@@ -21,6 +21,10 @@
             <td><%= @post.address %></td>
           </tr>
           <tr>
+            <th scope="row">カテゴリー</th>
+            <td><%= @post.category %></td>
+          </tr>
+          <tr>
             <th scope="row">主な目的</th>
             <td><%= @post.purpose %></td>
           </tr>
@@ -29,7 +33,7 @@
             <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
           </tr>
           <tr>
-            <th scope="row">感想</th>
+            <th scope="row">説明</th>
             <td><%= @post.body %></td>
           </tr>
         </tbody>
@@ -40,7 +44,7 @@
       <div class="favorite-btn-<%= @post.id %>">
         <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
       </div>
-      
+
       <div class="mt-4">
         <% if @user.id == current_user.id %>
           <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn btn-block btn-outline-info " %></td>
@@ -48,9 +52,9 @@
         <% end %>
       </div>
     </div>
-    
+
     <!--画像スライダー-->
-    <div class="col-md-7 offset-md-1">
+    <div class="col-md-7 offset-md-1 pt-5">
       <% if @post.post_images.present? %>
       <div class="slider">
         <% @post.post_images.each do |image| %>
@@ -58,11 +62,11 @@
         <% end %>
       </div>
       <% else %>
-        <%= image_tag 'no-image-icon.jpg', size: '300x250' %>
+        <%= image_tag 'no-image.jpg', size: '600x400' %>
       <% end %>
     </div>
   </div>
-  
+
   <!--地図-->
   <div class="row mt-4">
     <div class="col-md-4">

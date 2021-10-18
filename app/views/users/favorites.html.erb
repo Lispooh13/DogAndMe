@@ -1,5 +1,8 @@
-<h3>いいね一覧</h3>
-  <div class="row m-4">
+<div class='container'>
+  <div class='row mt-4'>
+    <h3>いいね一覧</h3>
+  </div>
+  <div class="row">
     <% if @favorites_posts.present? %>
       <% @favorites_posts.each do |post| %>
         <div class="col-12, m-1">
@@ -7,10 +10,10 @@
 
             <% if post.post_images.present? %>
               <% post.post_images.first(1).each do |image| %>
-                <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image-icon.jpg",size: '200x150'%><br>
+                <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image.jpg",size: '200x150'%><br>
               <% end %>
             <% else %>
-              <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
+              <%= image_tag 'no-image.jpg', size: '200x150' %><br>
             <% end %>
           <% end %>
           <%= link_to post.place,post_path(post) %>
@@ -18,3 +21,4 @@
       <% end %>
     <% end %>
   </div>
+</div>

@@ -61,7 +61,7 @@ before_action :ensure_user, only:[:edit, :update, :destroy]
   private
 
   def post_params
-    params.require(:post).permit(:place, :address, :purpose, :latitude, :longitude, :body, post_images_images: [])
+    params.require(:post).permit(:place, :address, :category, :purpose, :latitude, :longitude, :body, post_images_images: [])
   end
 
 
