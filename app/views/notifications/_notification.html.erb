@@ -1,49 +1,46 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-  <div class="col-sm-12 m-4">
+  <div class="col-md-6 m-3">
     <div class="form-inline">
-      <div class="align-middle">
+      <span>
         <%= link_to user_path(visitor) do %>
-          <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "70x70", class: "rounded-circle" %>
+          <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "50x50", class: "rounded-circle" %>
             <strong><%= visitor.name %></strong>
           <%= 'さんが' %>
         <% end %>
-      </div>
-      
+      </span>
+    </div>
+  </div>
       <% case notification.action %>
       <% when 'follow' then %>
-        <div class="col-sm-6 align-middle"><%= "あなたをフォローしました" %></div>
-        
+        <div class="col-md-6"><%= "あなたをフォローしました" %></div>
       <% when 'favorite' then %>
-        <div class="col-md-6"><%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %></div>
-        <div class="col-md-6"><%= "にいいねしました" %></div>
-        
+        <div class="col-md-6 form-inline"><%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+        <%= "にいいねしました" %></div>
       <% when 'comment' then %>
         <% if notification.post.user_id == visited.id %>
-          <div class="col-md-6"><%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %></div>
+          <div class="col-md-6 form-inline"><%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
         <% else %>
           <span>
             <div class="col-md-6">
               <%= link_to post_path(notification.post) do %>
-                <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "70x70", class: "rounded-circle" %>
+                <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "50x50", class: "rounded-circle" %>
                 <strong><%= notification.post.user.name + 'さんの投稿' %></strong>
               <% end %>
-            </div> 
-        <% end %> 
-            <div class="col-md-6 mt-1"><%= "にコメントしました" %></div>
+            </div>
+        <% end %>
+            <%= "にコメントしました" %></div>
           </span>
-        
+
         <div class="col-md-6">
-          <p class="text-muted.mb-0">
+          <p class="text-muted mb-0">
             <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
           </p>
-        </div>  
+        </div>
       <% end %>
       <div class="col-md-6">
-        <div class="small.text-muted.text-right">
-          <%= time_ago_in_words(notification.created_at).upcase %>
+        <div class="small text-muted text-right">
+          <i class="far fa-clock"></i><%= time_ago_in_words(notification.created_at).upcase %>前
         </div>
-      </div>  
+      </div>
       <hr>
-    </div>
-  </div>
