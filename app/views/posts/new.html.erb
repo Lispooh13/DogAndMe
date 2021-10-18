@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 mx-auto text-center shadow rounded px-0 my-5">
-        <h3 class="py-4">新規投稿</h3>
-
+      <h3 class="py-4">新規投稿</h3>
       <%= render "error_messages", post: @post %>
-
       <div class="px-5 py-3">
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group row">
@@ -42,9 +40,9 @@
             </div>
           </div>
 
-        <%= f.submit '投稿', class: "btn btn-block btn-success mt-5 mb-5" %>
-    <% end %>
+          <%= f.submit '投稿', class: "btn btn-block btn-success mt-5 mb-5" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

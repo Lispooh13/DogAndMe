@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :ensure_correct_user, only:[:edit, :destroy]
+before_action :ensure_user, only:[:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -10,11 +10,6 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # @post_images = @post.post_images
-    # if @post_images.count.to_i > 8
-    #   flash[:notice] = "最大8枚までです。"
-    #   render :edit
-    # end
     if @post.save
       flash[:notice] = "投稿が完了しました。"
       redirect_to post_path(@post)
@@ -40,20 +35,16 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
 
 
   def edit
-    @post = Post.find(params[:id])
     @post_images = @post.post_images
   end
 
 
   def update
-    @post = Post.find(params[:id])
-    @post.user_id = current_user.id
 
     if @post.update(post_params)
       flash[:notice] = "変更が完了しました。"
       redirect_to post_path(@post)
     else
-      @post = Post.find(params[:id])
       @post_images = @post.post_images
       render :edit
     end
@@ -61,7 +52,6 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
 
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
@@ -75,7 +65,7 @@ before_action :ensure_correct_user, only:[:edit, :destroy]
   end
 
 
-  def ensure_correct_user
+  def ensure_user
     @post = Post.find(params[:id])
      unless @post.user == current_user
      redirect_to posts_path
