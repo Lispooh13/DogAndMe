@@ -14,7 +14,11 @@
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <td><%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '50x50' ,class: "rounded-circle"%></td>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '50x50' ,class: "rounded-circle"%>
+              <% end %>
+              </td>
             <td class="align-middle"><%= link_to user.name , user_path(user) %></td>
             <%= render 'relationships/follow_count', user: user %>
             <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
