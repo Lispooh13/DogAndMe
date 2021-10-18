@@ -1,6 +1,6 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-3 my-1">
+<div class="col-md-6 mx-3 mt-4">
   <div class="form-inline">
     <%= link_to user_path(visitor) do %>
       <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "50x50", class: "rounded-circle" %>

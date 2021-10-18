@@ -5,7 +5,7 @@
       <%=render "info" ,user: @user %>
       <div class= "mt-4">
         <%= link_to " 一覧", favorites_user_path(@user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
-        <%= link_to " わんちゃん", user_dogs_path(@user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
+        <%= link_to " マイドッグ", user_dogs_path(@user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
 
         <% if @user.id == current_user.id %>
           <%= link_to " 編集", edit_user_path(@user), class: "fas fa-user-edit btn btn-block btn-outline-secondary" %>
