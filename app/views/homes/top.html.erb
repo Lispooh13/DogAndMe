@@ -15,7 +15,7 @@
 
 <div class="form-inline form-group mx-auto mt-3" style="width: 500px;">
   <%= form_with(url: search_path, local: true, method: :get, class: "search-form") do |f| %>
-    <%= f.text_field :keyword, autofocus: true, placeholder: "キーワードを入力",size: "45", class: "form-control" %>
+    <%= f.search_field :keyword, autofocus: true, placeholder: "キーワードを入力",size: "45", class: "form-control" %>
     <%= f.submit "検索",class: "search-btn" %>
   <% end %>
 </div>
