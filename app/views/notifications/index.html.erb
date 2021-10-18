@@ -1,12 +1,11 @@
-<!--自分の投稿に対するいいね、コメントは通知に表示しない-->
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %><!--自分の投稿に対するいいね、コメントは通知に表示しない-->
 <% if notifications.exists? %>
   <%= render notifications %>
   <%= paginate notifications %>
 <% else %>
-<div class="row my-5">
-  <div class="col-5 my-4">
+<div class="row">
+  <div class="col-md-6 m-5">
     <p>通知はありません</p>
   </div>
-</div>  
+</div>
 <% end %>

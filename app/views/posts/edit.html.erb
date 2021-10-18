@@ -1,15 +1,12 @@
-<div class='container'>
-  <div class='row mt-4'>
-    <h3>投稿編集</h3>
-  </div>
-  
-  <div class='row'>
-    <div class="mx-auto">
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto text-center shadow rounded px-0 my-5">
+    <h3 class="py-4">投稿編集</h3>
+  <div class="px-5 py-3">
 
      <%= form_with model:@post, local:true do |f| %>
-
-      <div class="form-group row mt-5">
-        <div class="col-2"><%= f.label :image, "画像" %></div>
+      <div class="form-group row">
+        <div class="col-2"><%= f.label :image, "画像",class: "form-control-file" ,style: "font-weight: bold;"%></div>
         <div class="col-10">
           <% @post_images.each do |post_image| %>
           <%= attachment_image_tag post_image, :image, :fill, 60, 60 %>
@@ -19,38 +16,36 @@
       </div>
 
       <div class="form-group row">
-        <div class="col-2"><%= f.label :place, "場所名" %></div>
+        <div class="col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
         <div class="col-10">
           <%= f.text_field :place, autofocus: true,class: 'form-control' %>
         </div>
       </div>
 
       <div class="form-group row">
-        <div class="col-2"><%= f.label :address, "住所" %></div>
+        <div class="col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
         <div class="col-10">
           <%= f.text_field :address, class: 'form-control'  %>
         </div>
       </div>
 
       <div class="form-group row">
-        <div class="col-2"><%= f.label :purpose, "主な目的" %></div>
+        <div class="col-2"><%= f.label :purpose, "主な目的" ,style: "font-weight: bold;"%></div>
         <div class="col-10">
           <%= f.select :purpose, Post.purposes.keys, {prompt: "選択してください"}, class: 'form-control' %>
         </div>
       </div>
 
       <div class="form-group row">
-        <div class="col-2"><%= f.label :body, "感想" %></div>
+        <div class="col-2"><%= f.label :body, "感想" ,style: "font-weight: bold;"%></div>
         <div class="col-10">
-          <%= f.text_area :body, class: 'form-control' ,size: "90x7" %>
+          <%= f.text_area :body, class: 'form-control' ,size: "50x5" %>
         </div>
       </div>
 
-      <div class="form-group row">
-        <div class="col-2"></div>
-        <div class="col-10"><%= f.submit '変更を保存', class: 'btn btn-success' %></div>
-      </div>
+     <%= f.submit "変更を保存", class: "btn btn-block btn-success mt-5 mb-5" %>
      <% end %>
    </div>
   </div>
+</div>
 </div>

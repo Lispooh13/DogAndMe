@@ -1,6 +1,7 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row mt-4'>
-    <h3>ユーザー一覧</h3>
+<div class="container px-4 pt-4">
+  <h3>ユーザー一覧</h3>
+  <div class="row mt-4">
+    <div class="col-sm-9">
       <table class="table table-sm">
         <thead>
           <tr>
@@ -14,7 +15,11 @@
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <td><%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '50x50' ,class: "rounded-circle"%></td>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '50x50' ,class: "rounded-circle"%>
+              <% end %>
+              </td>
             <td class="align-middle"><%= link_to user.name , user_path(user) %></td>
             <%= render 'relationships/follow_count', user: user %>
             <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
@@ -24,4 +29,5 @@
       </table>
     </div>
   </div>
+</div>
 <%= paginate @users %>

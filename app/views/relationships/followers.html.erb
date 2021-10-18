@@ -1,13 +1,15 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row mt-4'>
-    <h3>フォロワー</h3>
+<div class="container px-4 pt-4">
+  <h3>フォロワー</h3>
+  <div class="row mt-4">
+    <div class="col-sm-9">
     <% if @users.exists? %>
       <table class="table table-sm">
         <thead>
           <tr>
             <th></th>
             <th>名前</th>
-            <th></th>
+            <th>フォロー</th>
+            <th>フォロワー</th>
             <th></th>
           </tr>
         </thead>
@@ -15,11 +17,13 @@
           <% @users.each do |user| %>
             <tr>
               <td>
-                <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" ,size: '60x60' ,class: "rounded-circle"%>
+                <%= link_to user_path(user) do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '60x60' ,class: "rounded-circle"%>
+                <% end %>
               </td>
               <td class="align-middle"><%= link_to user.name, user_path(user) %></td>
-              <td class="align-middle">フォロー数: <%= user.followings.count %></td>
-              <td class="align-middle">フォロワー数: <%= user.followers.count %></td>
+              <%= render 'relationships/follow_count', user: user %>
+              <td class="align-middle"><%= render 'relationships/follow_btn', user: user %></td>
             </tr>
           <% end %>
         </tbody>
