@@ -1,22 +1,23 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-  <div class="col-md-6 my-2">
+  <div class="col-sm-12 m-4">
     <div class="form-inline">
-      <span>
+      <div class="align-middle">
         <%= link_to user_path(visitor) do %>
           <%= attachment_image_tag visitor, :profile_image, fallback: "no-image-icon.jpg", size: "70x70", class: "rounded-circle" %>
             <strong><%= visitor.name %></strong>
           <%= 'さんが' %>
         <% end %>
-      </span>
-    </div>
-  </div>
+      </div>
+      
       <% case notification.action %>
       <% when 'follow' then %>
-        <div class="col-md-6"><%= "あなたをフォローしました" %></div>
+        <div class="col-sm-6 align-middle"><%= "あなたをフォローしました" %></div>
+        
       <% when 'favorite' then %>
         <div class="col-md-6"><%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %></div>
         <div class="col-md-6"><%= "にいいねしました" %></div>
+        
       <% when 'comment' then %>
         <% if notification.post.user_id == visited.id %>
           <div class="col-md-6"><%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %></div>
@@ -44,3 +45,5 @@
         </div>
       </div>  
       <hr>
+    </div>
+  </div>
