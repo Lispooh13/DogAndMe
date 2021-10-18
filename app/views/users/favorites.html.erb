@@ -1,8 +1,8 @@
 <h3>いいね一覧</h3>
-      <div class="row m-4">
-        <% if @favorites_posts.present? %>
-          <% @favorites_posts.each do |post| %>
-            <div class="col-12, m-1">
+  <div class="row m-4">
+    <% if @favorites_posts.present? %>
+      <% @favorites_posts.each do |post| %>
+        <div class="col-12, m-1">
           <%= link_to post_path(post), class: "link" do %>
 
             <% if post.post_images.present? %>
@@ -12,10 +12,9 @@
             <% else %>
               <%= image_tag 'no-image-icon.jpg', size: '200x150' %><br>
             <% end %>
-
           <% end %>
-
           <%= link_to post.place,post_path(post) %>
-       </div>
+        </div>
       <% end %>
     <% end %>
+  </div>

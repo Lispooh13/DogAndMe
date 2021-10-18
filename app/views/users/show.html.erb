@@ -1,7 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
     <div class="col-md-3">
-
       <%=render "info" ,user: @user %>
       <div class= "mt-4">
         <%= link_to " 一覧", favorites_user_path(@user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
@@ -13,16 +12,13 @@
           <%= render 'relationships/follow_btn', user: @user %>
         <% end %>
       </div>
-
-
-
     </div>
-
     <div class="col-md-9">
       <h3>投稿一覧</h3>
       <div class="row m-3">
         <%= render "posts/index", posts: @posts %>
       </div>
       <%= paginate @posts %>
+    </div>
   </div>
 </div>

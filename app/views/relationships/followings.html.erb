@@ -7,7 +7,7 @@
         <thead>
           <tr>
             <th></th>
-            <th>名前</th>
+            <th>ニックネーム</th>
              <th>フォロー数</th>
              <th>フォロワー数</th>
              <th></th>
@@ -18,7 +18,7 @@
             <tr>
               <td>
                 <%= link_to user_path(user) do %>
-                  <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg" ,size: '60x60' ,class: "rounded-circle"%>
+                  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
                 <% end%>
               </td>
               <td class="align-middle"><%= link_to user.name, user_path(user) %></td>
