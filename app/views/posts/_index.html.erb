@@ -28,7 +28,7 @@
       <% if post.hashtags.present? %>
         <%= simple_format(post.hashbody.truncate(15))%>
       <% else %>
-      <%= simple_format(post.body.truncate(10))%>
+        <%= simple_format(post.body.truncate(10))%>
       <% end %>
     </div>
   </div>
