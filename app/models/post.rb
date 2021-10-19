@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   accepts_attachments_for :post_images, attachment: :image
 
   enum category:{"公園": 0, "自然": 1, "ドッグラン": 2, "レストラン": 3, "カフェ": 4, "ショップ": 5, "宿泊施設": 6, "複合施設": 7, "牧場": 8, "道の駅": 9,"遊園地": 10,"美術館/博物館": 11,"その他": 12}
-  enum purpose:{"遊ぶ": 0, "写真を撮る": 1, "飲食": 2, "買い物": 3, "泊まる": 4}
+
 #バリデーション
   validates :place, presence: true
   validates :address, presence: true
@@ -91,8 +91,8 @@ class Post < ApplicationRecord
     post.hashtags.clear
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.dawncase.delete('#'))
-      post.hashtag << tag
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      post.hashtags << tag
     end
   end
 

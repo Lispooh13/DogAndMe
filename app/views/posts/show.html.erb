@@ -1,68 +1,12 @@
 <!--投稿詳細-->
 <div class="container px-5 px-sm-0">
   <div class="row mt-4">
-    <div class="col-md-4">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to user_path(@user) do %>
-                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg" ,class: "rounded-circle" %>
-              <% end %>
-            </td>
-            <td class="align-middle"><%= link_to @user.name, user_path(@user) %></td>
-          </tr>
-          <tr>
-            <th scope="row">場所名</th>
-            <td><%= @post.place %></td>
-          </tr>
-          <tr>
-            <th scope="row">住所</th>
-            <td><%= @post.address %></td>
-          </tr>
-          <tr>
-            <th scope="row">カテゴリー</th>
-            <td><%= @post.category %></td>
-          </tr>
-          <tr>
-            <th scope="row">主な目的</th>
-            <td><%= @post.purpose %></td>
-          </tr>
-          <tr>
-            <th scope="row">投稿日</th>
-            <td><%= @post.created_at.strftime('%Y年%-m月%-d日(%a)')%></td>
-          </tr>
-          <tr>
-            <th scope="row">説明</th>
-            <td><%= @post.body %></td>
-          </tr>
-          <tr>
-            <th scope="row">タグ</th>
-            <td><%= render_with_hashtags(@post.hashbody) %></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <!--いいねボタン-->
-      <div class="favorite-btn-<%= @post.id %>">
-        <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
-      </div>
-
-      <div class="mt-4">
-        <% if @user.id == current_user.id %>
-          <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn btn-block btn-outline-info " %></td>
-          <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn btn-block btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %></td>
-        <% end %>
-      </div>
-    </div>
-
     <!--画像スライダー-->
-    <div class="col-md-7 offset-md-1 pt-5">
+    <div class="col-md-8 offset-md-2  pt-3">
       <% if @post.post_images.present? %>
       <div class="slider">
         <% @post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 600, 400 %>
+          <%= attachment_image_tag image, :image, :fill, 350, 250 %>
         <% end %>
       </div>
       <% else %>
@@ -70,16 +14,85 @@
       <% end %>
     </div>
   </div>
+  <div class="row mt-1 d-flex">
+    <div class="col-md-6 d-flex">
+        <!--いいねボタン-->
+        <div class="favorite-btn-<%= @post.id %>">
+          <%= render partial: 'favorites/favorite_btn', locals: { post: @post }%>
+        </div>
+        <!--コメント件数-->
+        <div class="comment-count">
+          <%= render 'post_comments/comment_count',post: @post %>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex justify-content-end">
+        <% if @user.id == current_user.id %>
+          <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn  btn-outline-info mr-3" %></td>
+          <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn  btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %></td>
+        <% end %>
+      </div>
+    </div>
 
-  <!--地図-->
-  <div class="row mt-4">
-    <div class="col-md-4">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(@user) do %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', size: "50x50", fallback: "no-image-icon.jpg" ,class: "rounded-circle" %>
+          <% end %>
+        </td>
+        <td class="align-middle"><%= link_to @user.name, user_path(@user) %></td>
+      </tr>
+      <tr>
+        <th scope="row">場所名</th>
+        <td><%= @post.place %></td>
+      </tr>
+      <tr>
+        <th scope="row">住所</th>
+        <td><%= @post.address %></td>
+      </tr>
+      <tr>
+        <th scope="row">カテゴリー</th>
+        <td><%= @post.category %></td>
+      </tr>
+      <tr>
+        <th scope="row">投稿日</th>
+        <td><%= @post.created_at.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+        <th scope="row">説明</th>
+        <td><%= @post.body %></td>
+      </tr>
+      <tr>
+        <th scope="row">タグ</th>
+        <td><%= render_with_hashtags(@post.hashbody) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="row my-5">
+    <div class="col-md-6">
+      <h5>コメント</h5>
+  
+      <!--コメント一覧-->
+      <div class="comment-index">
+        <%= render 'post_comments/comment_index', post: @post %>
+      </div>
+      <!--コメントフォーム-->
+      <div class="comment">
+        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+        <!--地図-->
       <div id='map'></div>
 
       <style>
       #map{
-        width: 400px;
-        height: 300px;
+        width: 600px;
+        height: 400px;
       }
       </style>
 
@@ -117,28 +130,6 @@
 
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
-
-
-    </div>
-
-    <div class="col-md-7 offset-md-1">
-      <div class = "d-flex">
-        <h5>コメント</h5>
-        <!--コメント件数-->
-        <div class="comment-count">
-          <%= render 'post_comments/comment_count',post: @post %>
-        </div>
-      </div>
-
-      <!--コメント一覧-->
-      <div class="comment-index">
-        <%= render 'post_comments/comment_index', post: @post %>
-      </div>
-
-      <!--コメントフォーム-->
-      <div class="comment">
-        <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
-      </div>
     </div>
   </div>
 </div>
