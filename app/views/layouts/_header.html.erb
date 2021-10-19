@@ -1,7 +1,7 @@
 <header class="shadow">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand p-3" href="/"><span>ワンジョイ！</span></a>
+      <a class="navbar-brand p-1" href="/"><span><%= image_tag 'logo.jpeg',size: '100x100' , class: 'logo'%></span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,44 +9,44 @@
         <ul class="navbar-nav ml-auto ">
           <li>
             <%= link_to posts_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-dog"></i>一覧
+              <i class="fas fa-dog"></i>Top
             <% end %>
           </li>
           <% if user_signed_in? %>
             <li>
               <%= link_to new_post_path ,class: 'nav-link text-dark' do%>
-                <i class="far fa-plus-square"></i>投稿
+                <i class="far fa-plus-square"></i>Post
               <% end %>
             </li>
             <li>
               <%= link_to user_path(current_user.id) ,class: 'nav-link text-dark' do%>
-                <i class="fas fa-user"></i>マイページ
+                <i class="fas fa-user"></i>My Page
               <% end %>
             </li>
             <li>
               <%= link_to users_path ,class: 'nav-link text-dark' do%>
-                <i class="fas fa-users"></i>ユーザー
+                <i class="fas fa-users"></i>User
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, :method => :delete ,class: 'nav-link text-dark' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
+                <i class="fas fa-sign-out-alt"></i>Log out
               <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to about_path ,class: 'nav-link text-dark' do%>
-                <i class="fas fa-paw"></i>ワンジョイとは？
+                <i class="fas fa-paw"></i>About
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path ,class: 'nav-link text-dark' do%>
-                <i class="fas fa-user-plus"></i>新規登録
+                <i class="fas fa-user-plus"></i>Sign up
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path ,class: 'nav-link text-dark' do%>
-                <i class="fas fa-sign-in-alt"></i>ログイン
+                <i class="fas fa-sign-in-alt"></i>Log in
               <% end %>
             </li>
           <% end %>

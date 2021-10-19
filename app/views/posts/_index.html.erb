@@ -1,25 +1,35 @@
 <!--投稿一覧-->
 <% posts.each do |post| %>
-  <div class="col-12, m-1">
-    <%= link_to post_path(post), class: "link" do %>
-
-      <% if post.post_images.present? %>
-        <% post.post_images.first(1).each do |image| %>
-          <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "no-image.jpg",size: '190x150'%><br>
-        <% end %>
-      <% else %>
-        <%= image_tag 'no-image.jpg', size: '190x150' %><br>
-      <% end %>
-
-    <% end %>
-
-    <%= link_to post.place, post_path(post) %><br>
-    
+<div class="col-lg-3  px-0">
+  <div class="post-box">
     <div class="d-flex">
+      <%= post.created_at.strftime("%Y/%m/%d")%>
       <div class="favorite-btn-<%= post.id %>">
         <%= render partial: 'favorites/favorite_btn', locals: { post: post }%>
       </div>
       <%= render 'post_comments/comment_count' , post: post %>
     </div>
+			  <ul class="slider">
+			    <% if post.post_images.present? %>
+            <% post.post_images.each do |image| %>
+              <li>
+                <%= attachment_image_tag image, :image, format: 'jpeg',size: '270x170'%>
+              </li>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no-image.jpg', size: '270x170' %>
+
+          <% end %>
+
+        </ul>
+
+      <%= link_to post.place ,post_path(post) ,class: "font-weight-bold" %>
+      <%= simple_format(post.address.truncate(15))%>
+      <% if post.hashtags.present? %>
+        <%= simple_format(post.hashbody.truncate(15))%>
+      <% else %>
+      <%= simple_format(post.body.truncate(10))%>
+      <% end %>
     </div>
+  </div>
 <% end %>

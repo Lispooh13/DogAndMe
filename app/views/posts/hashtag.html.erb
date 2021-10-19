@@ -1,3 +1,4 @@
+<div class="hashtag-index-all">
 <div class="row">
   <% if params[:name] == nil %>
 
@@ -11,13 +12,14 @@
             <p class="index-post-box-top">
               <%= post.created_at.strftime("%Y/%m/%d") %>
             </p>
-              <span class='far fa-comments index-comment-count' id='comment-count_<%= post.id %>' style="color: #777777;">
+              <span class='index-comment-count' id='comment-count_<%= post.id %>' style="color: #777777;">
                   <%= render 'post_comments/comment_count', post: post %>
               </span>
 
-              <span id = "favorite-button_<%= post.id %>"class="post-box-top-favorite">
+              <span id = "favorite-button_<%= post.id %>" class="post-box-top-favorite">
                   <%= render 'favorites/favorite_btn',post: post %>
               </span>
+            
               <%= link_to post_path(post),data: {"turbolinks" => false}  do %>
                 <ul>
                   <% post.post_images.each do |image| %>
