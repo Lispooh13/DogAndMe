@@ -21,7 +21,6 @@ before_action :ensure_user, only:[:edit, :update, :destroy]
 
   def index
     @posts = Post.page(params[:page]).reverse_order
-
   end
 
 
@@ -40,7 +39,6 @@ before_action :ensure_user, only:[:edit, :update, :destroy]
 
 
   def update
-
     if @post.update(post_params)
       flash[:notice] = "変更が完了しました。"
       redirect_to post_path(@post)
@@ -56,12 +54,24 @@ before_action :ensure_user, only:[:edit, :update, :destroy]
     flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
   end
-
+  
+#ハッシュタグ一覧
+  def hashtag
+    @user = current_user
+    if params[:name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{|hashtag| hashtag.post.count}
+    else
+      @hashtag = Hashtag.find_by(hashname: params[:name])
+      @post = @hashtag.posts.page(params[:page]).per(20).reverse_order
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
+    end
+  end
+  
 
   private
 
   def post_params
-    params.require(:post).permit(:place, :address, :category, :purpose, :latitude, :longitude, :body, post_images_images: [])
+    params.require(:post).permit(:place, :address, :category, :purpose, :latitude, :longitude, :body, :hashbody,  post_images_images: [], hashtag_ids: [])
   end
 
 

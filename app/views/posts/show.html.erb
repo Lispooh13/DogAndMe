@@ -36,6 +36,10 @@
             <th scope="row">説明</th>
             <td><%= @post.body %></td>
           </tr>
+          <tr>
+            <th scope="row">タグ</th>
+            <td><%= render_with_hashtags(@post.hashbody) %></td>
+          </tr>
         </tbody>
       </table>
 

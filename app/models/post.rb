@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments,dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :hashtag_posts, dependent: :destroy
+  has_many :hashtags, through: :hashtag_posts
 
 
 #PostImageのimageを取得
@@ -70,6 +72,28 @@ class Post < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+  
+#ハッシュタグ  
+  after_create do
+    post = Post.find_by(id: id)
+    #hashbodyに打ち込まれたハッシュタグを検出
+    hashtags =hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags.uniq.map do |hashtag|
+      #ハッシュタグは先頭の#を外した上で保存
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      post.hashtags << tag
+    end
+  end
+  #更新アクション
+  before_update do
+    post = Post.find_by(id: id)
+    post.hashtags.clear
+    hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags.uniq.map do |hashtag|
+      tag = Hashtag.find_or_create_by(hashname: hashtag.dawncase.delete('#'))
+      post.hashtag << tag
+    end
   end
 
 end

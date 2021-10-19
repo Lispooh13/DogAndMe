@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_184319) do
+ActiveRecord::Schema.define(version: 2021_10_19_052931) do
 
   create_table "dogs", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 2021_10_18_184319) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_favorites_on_post_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "hashtag_posts", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_hashtag_posts_on_hashtag_id"
+    t.index ["post_id"], name: "index_hashtag_posts_on_post_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -73,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_184319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category"
+    t.text "hashbody"
   end
 
   create_table "relationships", force: :cascade do |t|
