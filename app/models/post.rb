@@ -73,15 +73,15 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-  
-#ハッシュタグ  
+
+#ハッシュタグ
   after_create do
     post = Post.find_by(id: id)
     #hashbodyに打ち込まれたハッシュタグを検出
     hashtags =hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       #ハッシュタグは先頭の#を外した上で保存
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#').delete('＃'))
       post.hashtags << tag
     end
   end
@@ -91,7 +91,7 @@ class Post < ApplicationRecord
     post.hashtags.clear
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#').delete('＃'))
       post.hashtags << tag
     end
   end

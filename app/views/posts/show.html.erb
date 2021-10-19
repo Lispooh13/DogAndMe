@@ -25,12 +25,14 @@
           <%= render 'post_comments/comment_count',post: @post %>
         </div>
       </div>
-      <div class="col-md-6 d-flex justify-content-end">
-        <% if @user.id == current_user.id %>
-          <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn  btn-outline-info mr-3" %></td>
-          <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn  btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %></td>
-        <% end %>
-      </div>
+      <% if current_user != nil %>
+        <div class="col-md-6 d-flex justify-content-end">
+          <% if @user.id == current_user.id %>
+            <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn  btn-outline-info mr-3" %></td>
+            <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn  btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %></td>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
   <table class="table">
@@ -74,7 +76,7 @@
   <div class="row my-5">
     <div class="col-md-6">
       <h5>コメント</h5>
-  
+
       <!--コメント一覧-->
       <div class="comment-index">
         <%= render 'post_comments/comment_index', post: @post %>
@@ -84,7 +86,7 @@
         <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
       </div>
     </div>
-    
+
     <div class="col-md-6">
         <!--地図-->
       <div id='map'></div>
