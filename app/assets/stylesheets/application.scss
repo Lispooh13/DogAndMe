@@ -33,13 +33,12 @@
 body {
  padding-top: 106px;
  padding-bottom: 40px;
-// width: 100%;
-// height: 100vh;
+
 }
 
 .main-visual {
  // width: 100%; /* 横幅いっぱい */
- height: calc(100vh - 146px); /* 高さ300px */
+ height: calc(100vh - 146px);
  background-image: url("top.jpg");
  background-position: center top;
  background-repeat: no-repeat;
@@ -106,9 +105,6 @@ body {
   color: #efa04c;
 }
 
-.navbar {
- font-family: Futura;
-}
 
 .error-text {
  color:#FF3333;
