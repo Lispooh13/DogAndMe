@@ -89,7 +89,7 @@ Devise.setup do |config|
 
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
-  # Does not affect registerable.
+  # DogAndMees not affect registerable.
   # config.paranoid = true
 
   # By default Devise will store the user in session. You can skip storage for
@@ -222,7 +222,7 @@ Devise.setup do |config|
   # config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
-  # Don't put a too small interval or your users won't have the time to
+  # DogAndMen't put a too small interval or your users won't have the time to
   # change their passwords.
   config.reset_password_within = 6.hours
 
