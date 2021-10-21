@@ -1,44 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 mx-auto text-center shadow rounded px-0 my-5">
-
       <h5 class="bg-light py-4">新規登録</h5>
       <div class="p-4">
-
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
-              </div>
-              <%= f.text_field :name, autofocus: true , class:"form-control" ,:placeholder =>"ニックネーム"%>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
+            <%= f.text_field :name, autofocus: true , class:"form-control" ,:placeholder =>"ニックネーム"%>
+          </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              </div>
-              <%= f.email_field :email, class:"form-control ",:placeholder =>"メールアドレス"%>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
             </div>
+            <%= f.email_field :email, class:"form-control ",:placeholder =>"メールアドレス"%>
+          </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-              </div>
-              <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"パスワード(6文字)" %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
             </div>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"パスワード(6文字)" %>
+          </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
-              </div>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"パスワード確認" %>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
             </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"パスワード確認" %>
+          </div>
 
-            <%= f.submit "新規登録", class:"btn btn-block btn-info mt-5"%>
+          <%= f.submit "新規登録", class:"btn btn-block btn-info mt-5 mb-5" %>
         <% end %>
+        <%= link_to "ログインはこちら", new_user_session_path, class: "btn btn-block btn-secondary" %>
       </div>
     </div>
   </div>

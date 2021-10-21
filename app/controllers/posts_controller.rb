@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!,except: [:index, :new, :show]
+  before_action :authenticate_user!,except: [:index, :show]
   before_action :ensure_user, only:[:edit, :update, :destroy]
 
   def new
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
   end
-  
+
 #ハッシュタグ一覧
   def hashtag
     @user = current_user
@@ -67,7 +67,7 @@ class PostsController < ApplicationController
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     end
   end
-  
+
 
   private
 

@@ -9,27 +9,28 @@
       </div>
       <%= render 'post_comments/comment_count' , post: post %>
     </div>
-			  <ul class="slider">
-			    <% if post.post_images.present? %>
-            <% post.post_images.each do |image| %>
-              <li>
-                <%= attachment_image_tag image, :image, format: 'jpeg', class: 'post-index-image img-fluid' %>
-              </li>
-            <% end %>
-          <% else %>
-            <%= image_tag 'no-image.jpg', size: '270x170' %>
-
+	  
+	  <%= link_to post_path(post) do %>
+	    <ul class="slider">
+	      <% if post.post_images.present? %>
+          <% post.post_images.each do |image| %>
+            <li>
+              <%= attachment_image_tag image, :image, format: 'jpeg', class: 'post-index-image img-fluid' %>
+            </li>
           <% end %>
-
-        </ul>
-
-      <%= link_to post.place ,post_path(post) ,class: "font-weight-bold" %>
-      <%= simple_format(post.address.truncate(15))%>
-      <% if post.hashtags.present? %>
-        <%= simple_format(post.hashbody.truncate(15))%>
-      <% else %>
-        <%= simple_format(post.body.truncate(10))%>
-      <% end %>
+        <% else %>
+          <%= image_tag 'no-image.jpg', size: '270x170' %>
+        <% end %>
+      </ul>
+      <%= post.place %>
+    <% end %>
+    
+    <%= simple_format(post.address.truncate(18))%>
+    <% if post.hashtags.present? %>
+      <%= simple_format(post.hashbody.truncate(15))%>
+    <% else %>
+      <%= simple_format(post.body.truncate(15))%>
+    <% end %>
     </div>
   </div>
 <% end %>
