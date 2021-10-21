@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <%=render "info" ,user: @user %>
       <div class= "mt-4">
-        <%= link_to " 一覧", favorites_user_path(@user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
+        <%= link_to " いいね一覧", favorites_user_path(@user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
         <%= link_to " わんちゃん", user_dogs_path(@user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
 
         <% if @user.id == current_user.id %>
@@ -14,8 +14,11 @@
       </div>
     </div>
     <div class="col-md-9">
-      <h3>投稿一覧</h3>
-      <div class="row m-3">
+      <div class="d-flex">
+        <h3 style='color: #82654D; font-size: 40px;'>My Page</h3>
+        <p class='mt-3' style='font-size: 20px;'>ー投稿一覧ー</p>
+      </div>
+      <div class="row">
         <%= render "posts/index", posts: @posts %>
       </div>
       <%= paginate @posts %>

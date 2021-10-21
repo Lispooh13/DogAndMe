@@ -17,6 +17,7 @@
  @import "slick-theme";
  @import "slick";
 
+
  @import url('https://fonts.googleapis.com/css2?family=Raleway&family=Yomogi&display=swap');
 
 *{
@@ -26,12 +27,17 @@
 }
 
 .bg-header {
- background-color:#F3AD6A;
+ background-color:#FFB745;
+}
+
+.logo {
+ mix-blend-mode:darken;
 }
 
 body {
  padding-top: 106px;
  padding-bottom: 40px;
+ background-color:#FDF5EE;
 }
 
 .main-visual {

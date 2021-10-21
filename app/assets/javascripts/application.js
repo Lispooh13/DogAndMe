@@ -29,4 +29,3 @@ $(function() {
     autoplaySpeed: 4000, //再生スピード
   });
 });
-

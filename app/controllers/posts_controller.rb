@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
+    @posts = Post.page(params[:page]).reverse_order.per(12)
   end
 
 
