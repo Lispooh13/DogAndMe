@@ -13,19 +13,23 @@
 	background-color:#FFFFFF;
 }
 
-// 新規投稿ボタン
-.post-plus {
-	text-decoration: none;
-	width: 50px;
-	height: 50px;
-  font-size: 50px;
-}
 
 // 新規投稿,投稿編集
-.new-send {
+.post-send {
 	background-color: #ffdead;
 }
 
 .new-post-box{
 	background-color:#FFFFFF;
+}
+
+.hashtag-name{
+	margin-top:20px;
+	border: 1px solid #82654D;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.hashtag-name p{
+	margin: 10px;
 }

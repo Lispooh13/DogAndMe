@@ -4,29 +4,32 @@
 
       <% if @user.id == current_user.id %>
         <%= form_with model: @dog, url: user_dogs_path(@user), local:true do |f| %>
-        <div class="form-group">
-          <label class="dog_name_form">わんちゃんの名前</label>
-          <%= f.text_field :name , class: "form-control"%>
-        </div>
-
-        <div class="form-group">
-           <label class="dog_type_form">犬種</label>
-              <%= f.text_field :dog_type ,class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-           <label class="dog_size_form">大きさ</label>
-              <%= f.select :dog_size, Dog.dog_sizes.keys, {prompt: "選択してください"}, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-              <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
-        </div>
+          <div class="form-group">
+            <label class="dog_name_form">わんちゃんの名前</label>
+            <%= f.text_field :name , class: "form-control"%>
+          </div>
+  
+          <div class="form-group">
+             <label class="dog_type_form">犬種</label>
+                <%= f.text_field :dog_type ,class: "form-control" %>
+          </div>
+  
+          <div class="form-group">
+             <label class="dog_size_form">大きさ</label>
+                <%= f.select :dog_size, Dog.dog_sizes.keys, {prompt: "選択してください"}, class: "form-control" %>
+          </div>
+  
+          <div class="form-group">
+                <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h3>わんちゃん一覧</h3>
+      <div class="d-flex">
+        <h3 style='color: #82654D; font-size: 35px;'>My Dog</h3>
+        <p class='mt-3' style='font-size: 15px;'>ー愛犬ー</p>
+      </div>
       <table class="table">
         <thead>
           <tr>

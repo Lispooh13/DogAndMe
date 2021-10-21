@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row mt-2">
-    <div class="col-md-12 text-right post-plus">
+    <div class="col-md-6 d-flex">
+      <h3 style='color: #82654D; font-size: 40px;'>Hashtags</h3>
+      <p class='mt-3' style='font-size: 20px;'>ータグ一覧ー</p>
+    </div>
+
+    <div class="col-md-6 text-right post-plus">
       <%=link_to " ", new_post_path ,class: "far fa-plus-square text-dark" %>
     </div>
   </div>
@@ -14,13 +19,15 @@
 
   <div class="row">
     <div class= "col-md-12">
-      <% @hashtags.sort.reverse.each do |count| %>
-        <% count[1].each do |hashtag| %>
-        <p>
-          <%= link_to  "##{hashtag.hashname} (#{hashtag.posts.count}) 件","/post/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
-        </p>
+      <div class= "hashtag-name">
+        <% @hashtags.sort.reverse.each do |count| %>
+          <% count[1].each do |hashtag| %>
+            <p>
+              <%= link_to  "##{hashtag.hashname} (#{hashtag.posts.count}) 件","/post/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
+            </p>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

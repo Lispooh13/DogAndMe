@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 mx-auto text-center shadow rounded px-0 my-5">
-      <h3 class="py-4">マイページ編集</h3>
+    <div class="col-md-9 edit-user-box mx-auto text-center shadow rounded px-0 my-5">
+      <h3 class="user-send py-4"><i class="fas fa-user-edit"></i>マイページ編集</h3>
       <div class="px-5 py-3">
         <%= form_with model:@user, local:true do |f| %>
           <div class="form-group row">
@@ -26,8 +26,7 @@
             </div>
           </div>
 
-          <%= f.submit "変更を保存", class: "btn btn-block btn-success mt-5 mb-5" %>
-        <% end %>
+        <%= f.submit "\uf4ff変更を保存", style:'font-family: FontAwesome', class: "btn btn-block btn-info mt-5 mb-5" %>        <% end %>
       </div>
     </div>
   </div>
