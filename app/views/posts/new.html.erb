@@ -34,16 +34,16 @@
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :body, "説明" , style: "font-weight: bold;"%></div>
+            <div class="col-2"><%= f.label :body, "感想" , style: "font-weight: bold;"%></div>
             <div class="col-10">
-              <%= f.text_area :body, :placeholder => "例：屋外、屋内ともに愛犬と一緒に入れるカフェです。ドッグカフェではないので、リード着用が必須です。お水の提供サービスと犬用フードも数種類ありました。テラス席のソファから見える景色は緑が美しく、きれいな写真が撮れました！", class: "form-control",size: "50x6" %>
+              <%= f.text_area :body, :placeholder => "例：屋外、屋内ともに愛犬と一緒に入れるカフェです。〇〇メニューをきれいに食べてくれました。またテラス席のソファから見える景色が美しく、きれいな写真が撮れました！", class: "form-control",size: "50x6" %>
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-2"><%= f.label :hashbody, "ハッシュタグ入力欄" , style: "font-weight: bold;"%></div>
             <div class="col-10">
-              <%= f.text_area :hashbody, :placeholder => "例：#お水提供サービス #犬用フード #全犬種可 #屋内OK #写真映え #ケージ不要 ", class: "form-control",size: "50x3" %>
+              <%= f.text_area :hashbody, :placeholder => "例：#お水提供サービス #犬用フード #全犬種可 #屋内OK #写真映え #ケージ不要 #テラス席 #おしゃれカフェ", class: "form-control",size: "50x3" %>
             </div>
           </div>
 

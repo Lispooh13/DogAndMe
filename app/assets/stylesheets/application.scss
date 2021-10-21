@@ -123,3 +123,22 @@ body {
 .sign-in {
  background-color: #e6fafa;
 }
+
+
+.about {
+	background-image: url('about.jpg');
+ height: calc(100vh - 146px);
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+}
+
+.about-title {
+ margin-left:100px;
+ padding-top :20px;
+}
+
+.about-text {
+ margin-left:110px;
+ padding-top :10px;
+}
