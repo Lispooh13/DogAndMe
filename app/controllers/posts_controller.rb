@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   def hashtag
     @user = current_user
     if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{|hashtag| hashtag.post.count}
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.post.count}
     else
       @hashtag = Hashtag.find_by(hashname: params[:name])
       @post = @hashtag.posts.page(params[:page]).per(20).reverse_order
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:place, :address, :category, :purpose, :latitude, :longitude, :body, :hashbody,  post_images_images: [], hashtag_ids: [])
+    params.require(:post).permit(:place, :address, :category, :purpose, :latitude, :longitude, :body, :hashbody, post_images_images: [], hashtag_ids: [])
   end
 
 
