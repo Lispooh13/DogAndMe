@@ -81,7 +81,11 @@ class Post < ApplicationRecord
     hashtags =hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       #ハッシュタグは先頭の#を外した上で保存
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#').delete('＃'))
+      if hashtag.include?("#")
+        tag = Hashtag.find_or_create_by(hashname: hashtag.delete('#'))
+      elsif  hashtag.include?("＃")
+        tag = Hashtag.find_or_create_by(hashname: hashtag.delete('＃'))
+      end
       post.hashtags << tag
     end
   end
@@ -91,7 +95,11 @@ class Post < ApplicationRecord
     post.hashtags.clear
     hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#').delete('＃'))
+      if hashtag.include?("#")
+        tag = Hashtag.find_or_create_by(hashname: hashtag.delete('#'))
+      elsif  hashtag.include?("＃")
+        tag = Hashtag.find_or_create_by(hashname: hashtag.delete('＃'))
+      end
       post.hashtags << tag
     end
   end

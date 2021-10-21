@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   
   get 'search' => "searches#search"
-  get '/post/hashtag/:name' => 'posts#hashtag'
+  
+  get '/post/hashtag/:hash_name' => 'posts#hashtag',as: 'hashtag_name'
   get '/post/hashtag' => 'posts#hashtag'
 
 end

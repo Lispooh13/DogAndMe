@@ -67,7 +67,12 @@
       </tr>
       <tr>
         <th scope="row">タグ</th>
-        <td><%= render_with_hashtags(@post.hashbody) %></td>
+        <td>
+          <% @post.hashtags.each do |hashtag| %>
+            <%= link_to "#" + hashtag.hashname , hashtag_name_path(hashtag.hashname) %>
+          <% end %>
+        </td>
+
       </tr>
     </tbody>
   </table>

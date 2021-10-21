@@ -59,11 +59,11 @@ class PostsController < ApplicationController
 #ハッシュタグ一覧
   def hashtag
     @user = current_user
-    if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.post.count}
+    if params[:hash_name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     else
-      @hashtag = Hashtag.find_by(hashname: params[:name])
-      @post = @hashtag.posts.page(params[:page]).per(20).reverse_order
+      @hashtag = Hashtag.find_by(hashname: params[:hash_name])
+      @posts = @hashtag.posts.page(params[:page]).per(20).reverse_order
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     end
   end
