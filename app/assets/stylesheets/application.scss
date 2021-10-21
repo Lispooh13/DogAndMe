@@ -29,15 +29,12 @@
  background-color:#F3AD6A;
 }
 
-
 body {
  padding-top: 106px;
  padding-bottom: 40px;
-
 }
 
 .main-visual {
- // width: 100%; /* 横幅いっぱい */
  height: calc(100vh - 146px);
  background-image: url("top.jpg");
  background-position: center top;
@@ -46,14 +43,16 @@ body {
  background-size: cover;
 }
 
-// .UserAria {
-//  background-image: url(two-puppy.jpg);
-//  width: 100vw;
-//  height: 100vh;
-//  background-repeat:  no-repeat;
-//  background-position: covor
-// }
+.bg-white-50 {
+ background-color: rgba(255, 255, 255, .3);
+ border-radius: 20px;
+}
 
+.post-index-image {
+ height: 170px;
+ width: 100%;
+ object-fit: cover;
+}
 
 .pagination>li>a:hover {
   border-radius: 15px;
@@ -110,13 +109,3 @@ body {
  color:#FF3333;
 }
 
-.bg-white-50 {
- background-color: rgba(255, 255, 255, .3);
- border-radius: 30px;
-}
-
-.post-index-image {
- height: 170px;
- width: 100%;
- object-fit: cover;
-}
