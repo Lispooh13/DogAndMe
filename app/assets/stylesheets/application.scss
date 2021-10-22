@@ -111,11 +111,8 @@ body {
 }
 
 
-.error-text {
- color:#FF3333;
-}
 
-// 新規登録
+// 新規登録、ログイン
 .sign-in-box {
  background-color:#FFFFFF;
 }
@@ -124,7 +121,7 @@ body {
  background-color: #e6fafa;
 }
 
-
+// アバウトページ
 .about {
 	background-image: url('about.jpg');
  height: calc(100vh - 146px);

@@ -14,11 +14,12 @@ class Post < ApplicationRecord
 
   enum category:{"公園": 0, "自然": 1, "ドッグラン": 2, "レストラン": 3, "カフェ": 4, "ショップ": 5, "宿泊施設": 6, "複合施設": 7, "牧場": 8, "道の駅": 9,"遊園地": 10,"美術館/博物館": 11,"その他": 12}
 
-#バリデーション
-  validates :place, presence: true
+  validates :place, presence: true,
+    length: { maximum: 255 }
   validates :address, presence: true
   validates :category, presence: true
-  validates :body, presence: true
+  validates :body, presence: true,
+    length: { maximum: 1000 }
 
 
 #場所名と住所、説明からの部分検索
@@ -89,7 +90,7 @@ class Post < ApplicationRecord
       post.hashtags << tag
     end
   end
-  #更新アクション
+
   before_update do
     post = Post.find_by(id: id)
     post.hashtags.clear

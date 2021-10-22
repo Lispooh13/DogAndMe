@@ -16,12 +16,20 @@
 // 新規投稿,投稿編集
 .post-send {
 	background-color: #ffdead;
+	margin-bottom:0px;
 }
 
 .new-post-box{
 	background-color:#FFFFFF;
 }
 
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}
+
+// ハッシュタグ一覧
 .hashtag-name{
 	margin-top:20px;
 	border: 1px solid #82654D;
@@ -32,3 +40,12 @@
 .hashtag-name p{
 	margin: 10px;
 }
+
+// エラーメッセージ
+.alert {
+    color:#262626; 
+    background:#FFEBE8;
+    text-align: center;
+    border:2px solid #990000;
+    padding:12px; font-weight:850;
+  }

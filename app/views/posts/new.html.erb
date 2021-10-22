@@ -13,28 +13,28 @@
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_field :place, autofocus: true, :placeholder => "例：◯◯カフェ", class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_field :address, :placeholder => "◯◯県△△市□□町1234", class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.select :category, Post.categories.keys, {prompt: "選択してください"},style: "font-weight: bold;",class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :body, "感想" , style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :body, "説明" , style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_area :body, :placeholder => "例：屋外、屋内ともに愛犬と一緒に入れるカフェです。〇〇メニューをきれいに食べてくれました。またテラス席のソファから見える景色が美しく、きれいな写真が撮れました！", class: "form-control",size: "50x6" %>
             </div>

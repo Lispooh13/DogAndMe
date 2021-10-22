@@ -1,9 +1,7 @@
-<div class="error-text">
-  <% if post.errors.any? %>
-    <ul style="list-style: none;">
-      <% post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+<% if post.errors.any? %>
+  <ul class="alert", style="list-style: none;">
+    <% post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
