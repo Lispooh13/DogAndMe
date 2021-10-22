@@ -17,6 +17,7 @@
 
 //= require rails-ujs
 //= require activestorage
+//= stub flash_window
 //= require_tree .
 /*global $*/
 

@@ -139,3 +139,51 @@ body {
  margin-left:110px;
  padding-top :10px;
 }
+
+// フラッシュメッセージ
+main {
+  .main {
+    .flash-window  {
+      // 窓の形、色、文字の形、色
+      height: 50px;
+      padding: 10px;
+      color: white;
+      background: #FFB745;
+      border-radius: 10px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      // 表示・非表示にかける時間
+      transition: 0.5s 0s ease;
+
+      // 窓の位置調整
+      position: fixed;
+      bottom: 40px;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      p {
+        color: white;
+
+        span {
+          margin-left: 1vw;
+          color: white;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      // 窓が非表示の時の状態
+      &.hidden {
+        opacity: 0;
+        bottom: -50px;
+      }
+    }
+  }
+}
+
