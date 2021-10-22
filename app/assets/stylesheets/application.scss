@@ -30,6 +30,10 @@
  background-color:#FFB745;
 }
 
+.bg-footer {
+ background-color:#66380a;
+}
+
 .logo {
  mix-blend-mode:darken;
 }
@@ -42,16 +46,31 @@ body {
 
 .main-visual {
  height: calc(100vh - 146px);
- background-image: url("top.jpg");
- background-position: center top;
+ background-image: url("top.jpeg");
+ background-position: center;
  background-repeat: no-repeat;
  background-attachment: fixed;
  background-size: cover;
 }
 
+.main-title {
+ color: #82654D;
+ font-size: 50px;
+ padding: auto;
+}
+
+.main-visual-content {
+  margin-left: 50px;
+}
+
+
+
 .bg-white-50 {
  background-color: rgba(255, 255, 255, .3);
  border-radius: 20px;
+ position: absolute;
+ margin-top: 170px;
+ margin-left: 300px;
 }
 
 .post-index-image {

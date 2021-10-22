@@ -1,19 +1,15 @@
 <div class="main-visual">
-  <div class="main-visual-content d-flex justify-content-center">
-    <div class="p-5 bg-white-50">
-      <p class="main-visual-title">
-        Welcome to Dog and Me<br>
-        </p>
-        <p class="main-visual-text">
-          いつでもどこでもわんちゃんと一緒
-        </p>
-        <%= link_to "投稿一覧を見る", posts_path, class: "btn btn-lg btn-light" %>
+  <div class="main-visual-content">
+    <div class="main-title">Welcome to Dog and Me</div>
+      <p>いつでもどこでもわんちゃんと一緒</p>
+  </div>
+  <div class="p-5 bg-white-50">
+  <%= link_to "投稿一覧を見る", posts_path, class: "mb-5 mx-4 btn btn-lg btn-light" %><br>
 
-        <% if !user_signed_in? %>
-          <%= link_to "ログイン", new_user_session_path , class: "btn btn-success "%>
-          <%= link_to "新規登録", new_user_registration_path , class: "btn btn-primary "%>
-        <% end %>
-    </div>
+  <% if !user_signed_in? %>
+    <%= link_to "ログイン", new_user_session_path , class: "mx-2 btn btn-success "%>
+    <%= link_to "新規登録", new_user_registration_path , class: "mx-2 btn btn-primary "%>
+  <% end %>
   </div>
 </div>
 
