@@ -2,30 +2,21 @@
   <div class="d-flex justify-content-center align-items-center mb-2">
     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', size: "100x100", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
   </div>
-
-  <table class="table">
-    <tbody>
-      <tr>
-        <th scope="row">ニックネーム</th>
-        <td><%= user.name %></td>
-      </tr>
-      <tr>
-        <th scope="row">自己紹介</th>
-        <td><%= user.introduction %></td>
-      </tr>
-      <tr>
-        <th>フォロー</th>
-        <th><%= link_to user_followings_path(user) do %>
-        <%= user.followings.count %>
-        <% end %>
-        </th>
-      </tr>
-      <tr>
-        <th>フォロワー</th>
-        <th><%= link_to user_followers_path(user) do %>
-        <%= user.followers.count %>
-        <% end %>
-        </th>
-      </tr>
-    </tbody>
-  </table>
+  
+  <strong>ニックネーム</strong><br>
+  <%= user.name %>
+  <hr>
+  <strong>自己紹介</strong><br>
+  <%= user.introduction %>
+  <hr>
+  <strong>フォロー</strong><br>
+  <%= link_to user_followings_path(user) do %>
+    <%= user.followings.count %>
+  <% end %>
+  <hr>
+  <strong>フォロワー</strong><br>
+  <%= link_to user_followers_path(user) do %>
+    <%= user.followers.count %>
+  <% end %>
+  <hr>
+  
