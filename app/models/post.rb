@@ -23,19 +23,29 @@ class Post < ApplicationRecord
 
 
 #場所名と住所、説明からの部分検索
-  def self.search(search)
-    if search != ""
-      @hashtag = Hashtag.where('hashname LIKE(?)', "%#{search}%")
-      @post = Post.where(['place LIKE(?) OR address LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%"])
-      if @hashtag.present?
-        tagposts = HashtagPost.where(hashtag_id: @hashtag.ids)
-        tagpost = tagposts.pluck(:post_id)
-        post = Post.where(id: tagpost)
-        @post += post
-      end
-    else
-      Post.all
-    end
+  def self.search(keyword)
+    # if search != ""
+    #   @hashtag = Hashtag.where('hashname LIKE(?)', "%#{search}%")
+    #   @post = Post.where(['place LIKE(?) OR address LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%"])
+    #   if @hashtag.present?
+    #     tagposts = HashtagPost.where(hashtag_id: @hashtag.ids)
+    #     tagpost = tagposts.pluck(:post_id)
+    #     post = Post.where(id: tagpost)
+    #    @post += post
+    #  end
+    # else
+    #  Post.all
+    # end
+
+    return [] if keyword.blank?
+
+    hashtag_ids = Hashtag.where('hashname LIKE ?', "%#{keyword}%").pluck(:id)
+    hashtag_post_ids = HashtagPost.where(hashtag_id: hashtag_ids).pluck(:post_id)
+    hashtag_posts = Post.where(id: hashtag_post_ids)
+    posts = Post.where(['place LIKE ? OR address LIKE ? OR body LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    result = (posts + hashtag_posts).uniq
+    result.sort_by! { |data| data[:created_at] }.reverse!
+
   end
 
 # 通知
