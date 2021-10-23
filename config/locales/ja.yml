@@ -9,6 +9,7 @@ ja:
         body: 説明
       user:
         name: 名前
+        introduction: 自己紹介
   views:
     pagination:
       first: "&laquo; 最初"

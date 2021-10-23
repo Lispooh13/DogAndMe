@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-9 new-post-box mx-auto text-center shadow rounded px-0 my-5">
       <h3 class="post-send py-4"><i class="far fa-edit"></i>編集</h3>
+      <%= render "error_messages", post: @post %>
       <div class="px-5 py-3">
 
         <%= form_with model:@post, local:true do |f| %>
@@ -16,28 +17,28 @@
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_field :place, autofocus: true,class: 'form-control' %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_field :address, class: 'form-control'  %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.select :category, Post.categories.keys, {prompt: "選択してください"}, class: "form-control" %>
             </div>
           </div>
 
           <div class="form-group row">
-            <div class="col-2"><%= f.label :body, "説明" ,style: "font-weight: bold;"%></div>
+            <div class="required col-2"><%= f.label :body, "説明" ,style: "font-weight: bold;"%></div>
             <div class="col-10">
               <%= f.text_area :body, class: 'form-control' ,size: "50x5" %>
             </div>
