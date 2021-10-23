@@ -25,7 +25,14 @@ class Post < ApplicationRecord
 #場所名と住所、説明からの部分検索
   def self.search(search)
     if search != ""
-      Post.where(['place LIKE(?) OR address LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%"])
+      @hashtag = Hashtag.where('hashname LIKE(?)', "%#{search}%")
+      @post = Post.where(['place LIKE(?) OR address LIKE(?) OR body LIKE(?)', "%#{search}%", "%#{search}%","%#{search}%"])
+      if @hashtag.present?
+        tagposts = HashtagPost.where(hashtag_id: @hashtag.ids)
+        tagpost = tagposts.pluck(:post_id)
+        post = Post.where(id: tagpost)
+        @post += post
+      end
     else
       Post.all
     end

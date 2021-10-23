@@ -14,10 +14,8 @@ class UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorites_posts = Post.find(favorites)
-    # @posts = @favorites_posts.page(params[:page]).order(created_at: :desc).per(6)
+    @favorites_posts = Post.where(id: favorites).page(params[:page]).order(created_at: :desc).per(6)
   end
-
 
   def edit
     @user = User.find(params[:id])
