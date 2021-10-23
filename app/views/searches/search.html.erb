@@ -3,17 +3,17 @@
     <div>
       <h3 style="color: #82654D; font-size: 40px;">Search Results</h3>
       <p style="font-size: 20px;">
-        ー<%= "#{params[:keyword]} no " unless params[:keyword].blank? %>検索結果ー
+        ー<%= "#{params[:keyword]}の" unless params[:keyword].blank? %>検索結果ー
       </p>
     </div>
 
     <% if @posts.blank? %>
-      Nothing
+      検索結果はありません
     <% else %>
       <div class="row">
         <%= render 'posts/index', posts: @posts %>
       </div>
     <% end %>
-
+ <%= paginate @posts %>
 </div>
-<%= paginate @posts %>
+
