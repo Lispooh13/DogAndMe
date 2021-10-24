@@ -46,7 +46,7 @@ body {
 
 .main-visual {
  height: calc(100vh - 146px);
- background-image: url("top.jpeg");
+ background-image: image-url("top.jpeg");
  background-position: center;
  background-repeat: no-repeat;
  background-attachment: fixed;
@@ -142,7 +142,7 @@ body {
 
 // アバウトページ
 .about {
-	background-image: url('about.jpg');
+	background-image: image-url('about.jpg');
  height: calc(100vh - 146px);
  background-repeat: no-repeat;
  background-attachment: fixed;
