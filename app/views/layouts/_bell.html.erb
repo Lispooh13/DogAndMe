@@ -1,7 +1,6 @@
 <%= link_to notifications_path do %>
     <% if user_signed_in? && current_user.unchecked_notifications.any? %>
-        <i class="fas fa-bell fa-lg.fa-stack-2x nav-link text-dark" style="font-size: 1.3em;"></i>
-        <i class="fas fa-circle n-circle.fa-stack-1x"></i>
+
     <% else %>
         <i class="fas fa-bell fa-lg nav-link text-dark" style="font-size: 1.3em;"></i>
     <% end %>
