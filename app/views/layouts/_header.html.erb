@@ -11,12 +11,6 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto ">
         <li>
-          <%= link_to about_path ,class: 'nav-link text-dark' do%>
-            <i class="fas fa-paw"></i><strong>About</strong>
-          <% end %>
-        </li>
-
-        <li>
           <%= link_to posts_path ,class: 'nav-link text-dark' do%>
             <i class="fas fa-dog"></i><strong>Home</strong>
           <% end %>
@@ -49,6 +43,11 @@
             <% end %>
           </li>
         <% else %>
+          <li>
+            <%= link_to about_path ,class: 'nav-link text-dark' do%>
+              <i class="fas fa-paw"></i><strong>About</strong>
+            <% end %>
+          </li>
           <li>
             <%= link_to new_user_registration_path ,class: 'nav-link text-dark' do%>
               <i class="fas fa-user-plus"></i><strong>新規登録</strong>

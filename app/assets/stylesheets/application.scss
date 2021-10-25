@@ -159,22 +159,27 @@ body {
 
 // アバウトページ
 .about {
-	background-image: image-url('about.jpg');
- height: calc(100vh - 146px);
- background-repeat: no-repeat;
- background-attachment: fixed;
- background-size: cover;
+  height: calc(100vh - 146px);
+  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("about.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .about-title {
- margin-left:100px;
  padding-top :20px;
 }
 
 .about-text {
- margin-left:110px;
  padding-top :10px;
+ font-size :20px;
+ line-height:200%;
 }
+
+.about-message{
+ font-size :20px;
+}
+
 
 // フラッシュメッセージ
 main {
