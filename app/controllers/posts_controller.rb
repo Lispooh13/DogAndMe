@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.page(params[:page]).reverse_order.per(12)
+    @posts = Post.page(params[:page]).reverse_order.per(15)
   end
 
 
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     else
       @hashtag = Hashtag.find_by(hashname: params[:hash_name])
-      @posts = @hashtag.posts.page(params[:page]).per(20).reverse_order
+      @posts = @hashtag.posts.page(params[:page]).per(15).reverse_order
       @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     end
   end

@@ -7,14 +7,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(6)
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(15)
   end
 
-  #いいね一覧
+  #お気に入り一覧
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorites_posts = Post.where(id: favorites).page(params[:page]).order(created_at: :desc).per(6)
+    @favorites_posts = Post.where(id: favorites).page(params[:page]).order(created_at: :desc).per(15)
   end
 
   def edit

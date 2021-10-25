@@ -51,6 +51,7 @@ body {
  background-repeat: no-repeat;
  background-attachment: fixed;
  background-size: cover;
+ position: relative;
 }
 
 .main-title {
@@ -59,18 +60,23 @@ body {
  padding: auto;
 }
 
+.sub-title {
+ font-size: 20px;
+ color: #82654D;
+}
+
+
+
 .main-visual-content {
   margin-left: 50px;
 }
-
 
 
 .bg-white-50 {
  background-color: rgba(255, 255, 255, .3);
  border-radius: 20px;
  position: absolute;
- margin-top: 170px;
- margin-left: 300px;
+ top:350px; left:100px
 }
 
 .post-index-image {
@@ -125,17 +131,19 @@ body {
 
 .bell-mark-circle {
  font-size: 1.3em;
+ color: #f55151;
+ 
 }
 
 .bell-mark {
  font-size: 1.3em;
+ color: #000000;
 }
 
 .n-circle {
   position: absolute;
-  padding-left: 1rem;
   padding-top: 0rem;
-  color: #efa04c;
+  color: #f55151;
 }
 
 

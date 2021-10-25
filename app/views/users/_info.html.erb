@@ -1,6 +1,8 @@
 <!--ユーザー詳細画面サイドバー-->
   <div class="d-flex justify-content-center align-items-center mb-2">
-    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', size: "100x100", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
+    <%= link_to edit_user_path(user) do %>
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', size: "100x100", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
+    <% end %>
   </div>
   
   <strong>ニックネーム</strong><br>
@@ -21,14 +23,13 @@
   <hr>
   
   <div class= "my-4">
-    <%= link_to " 投稿一覧", user_path(@user), class: "fas fa-user btn btn-block btn-outline-secondary"%>
-    <%= link_to " いいね一覧", favorites_user_path(@user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
-    <%= link_to " わんちゃん", user_dogs_path(@user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
-  
     <% if @user.id == current_user.id %>
-      <%= link_to " 編集", edit_user_path(@user), class: "fas fa-user-edit btn btn-block btn-outline-secondary" %>
+      <%= link_to " 編集", edit_user_path(user), class: "fas fa-user-edit btn btn-block btn-outline-secondary" %>
     <% else %>
-      <%= render 'relationships/follow_btn', user: @user %>
+      <%= render 'relationships/follow_btn', user: user %>
     <% end %>
+    <%= link_to " お気に入り一覧", favorites_user_path(user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
+    <%= link_to " わんちゃん", user_dogs_path(user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
+    <%= link_to " 投稿一覧", user_path(user), class: "fas fa-user btn btn-block btn-outline-secondary"%>
 </div>
 
