@@ -106,7 +106,6 @@ class Post < ApplicationRecord
     posts = Post.where(['place LIKE ? OR address LIKE ? OR body LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
     result = (posts + hashtag_posts).uniq
     result.sort_by! { |data| data[:created_at] }.reverse!
-
   end
 
 

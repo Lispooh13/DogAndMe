@@ -1,4 +1,4 @@
-<%= form_with(model:[@post, @post_comment])do |f| %>
+<%= form_with(model:[post, post_comment])do |f| %>
   <%= f.text_area :comment ,placeholder: "コメントをここに",size: "40", autofocus: true, class: "form-control"%>
   <%= f.submit "\uf1d8送信", style:'font-family: FontAwesome',class: "btn btn-sm btn-secondary" %>
 <% end %>

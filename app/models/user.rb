@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :dogs, dependent: :destroy
+  
+  def current_user(current_user)
+    self.id = current_user.id
+  end
+
 
 # フォロー・フォロワー
   #フォローしているuser達
