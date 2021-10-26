@@ -1,5 +1,5 @@
 <% if post.errors.any? %>
-  <ul class="alert", style="list-style: none;">
+  <ul class="posts-alert", style="list-style: none;">
     <% post.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>

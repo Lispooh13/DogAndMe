@@ -100,10 +100,6 @@ class Post < ApplicationRecord
   def self.search(keyword)
     return [] if keyword.blank?
     
-    # dog_ids = Dog.where(['dog_size LIKE ? OR dog_type LIKE ?', "%#{keyword}%", "%#{keyword}%"]).pluck(:id)
-    # user_ids = User.where(user_id: dog_ids)
-    # Post.where(id: )
-
     hashtag_ids = Hashtag.where('hashname LIKE ?', "%#{keyword}%").pluck(:id)
     hashtag_post_ids = HashtagPost.where(hashtag_id: hashtag_ids).pluck(:post_id)
     hashtag_posts = Post.where(id: hashtag_post_ids)
