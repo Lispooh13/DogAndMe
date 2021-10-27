@@ -160,7 +160,7 @@ body {
 // アバウトページ
 .about {
   height: calc(100vh - 146px);
-  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("about.jpeg");
+  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
