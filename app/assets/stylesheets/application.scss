@@ -26,6 +26,18 @@
     font-family: 'FontAwesome', 'Raleway', 'Yomogi', cursive!important;
 }
 
+@media screen and (min-width:668px) {
+  .about {
+  height: calc(100vh - 146px);
+  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ }
+
+}
+
+
 .bg-header {
  background-color:#FFB745;
 }
@@ -132,7 +144,7 @@ body {
 .bell-mark-circle {
  font-size: 1.3em;
  color: #f55151;
- 
+
 }
 
 .bell-mark {
@@ -157,14 +169,6 @@ body {
  background-color: #e6fafa;
 }
 
-// アバウトページ
-.about {
-  height: calc(100vh - 146px);
-  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 .about-title {
  padding-top :20px;
