@@ -2,49 +2,39 @@
   <div class="row">
     <div class="col-md-9 new-post-box mx-auto text-center shadow rounded px-0 my-5">
       <h3 class="post-send py-4"><i class="fas fa-pencil-alt"></i>新規投稿</h3>
+      
       <%= render "error_messages", post: @post %>
-      <div class="px-5 py-3">
+      
+      <div class="px-3 py-3 text-left">
         <%= form_with model:@post, local:true do |f| %>
-          <div class="form-group row">
-            <div class="col-2"><%= f.label :image, "画像(複数可)" ,class: "form-control-file" ,style: "font-weight: bold;"%></div>
-            <div class="col-10">
-              <%= f.attachment_field :post_images_images, multiple: true %>
-            </div>
+          <div class="form-group">
+            <%= f.label :image, "画像(複数可)" ,class: "form-control-file" ,style: "font-weight: bold;"%>
+            <%= f.attachment_field :post_images_images, multiple: true %>
           </div>
 
-          <div class="form-group row">
-            <div class="required col-2"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
-            <div class="col-10">
-              <%= f.text_field :place, autofocus: true, :placeholder => "例：◯◯カフェ", class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <div class="required"><%= f.label :place, "場所名" ,style: "font-weight: bold;"%></div>
+            <%= f.text_field :place, :placeholder => "例：◯◯カフェ", class: "form-control" %>
           </div>
 
-          <div class="form-group row">
-            <div class="required col-2"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
-            <div class="col-10">
+          <div class="form-group">
+            <div class="required"><%= f.label :address, "住所" ,style: "font-weight: bold;"%></div>
               <%= f.text_field :address, :placeholder => "◯◯県△△市□□町1234", class: "form-control" %>
-            </div>
           </div>
 
-          <div class="form-group row">
-            <div class="required col-2"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
-            <div class="col-10">
+          <div class="form-group">
+            <div class="required"><%= f.label :category, "カテゴリー" , style: "font-weight: bold;"%></div>
               <%= f.select :category, Post.categories.keys, {prompt: "選択してください"},style: "font-weight: bold;",class: "form-control" %>
-            </div>
           </div>
 
-          <div class="form-group row">
-            <div class="required col-2"><%= f.label :body, "説明" , style: "font-weight: bold;"%></div>
-            <div class="col-10">
+          <div class="form-group">
+            <div class="required"><%= f.label :body, "説明" , style: "font-weight: bold;"%></div>
               <%= f.text_area :body, :placeholder => "例：屋外、屋内ともに愛犬と一緒に入れるカフェです。〇〇メニューをきれいに食べてくれました。またテラス席のソファから見える景色が美しく、きれいな写真が撮れました！", class: "form-control",size: "50x6" %>
-            </div>
           </div>
 
-          <div class="form-group row">
-            <div class="col-2"><%= f.label :hashbody, "ハッシュタグ入力欄" , style: "font-weight: bold;"%></div>
-            <div class="col-10">
-              <%= f.text_area :hashbody, :placeholder => "例：#高齢犬 #犬用フード #全犬種可 #屋内OK #写真映え #ケージ不要 #テラス席 #おしゃれカフェ", class: "form-control",size: "50x3" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :hashbody, "ハッシュタグ入力欄" , style: "font-weight: bold;"%>
+            <%= f.text_area :hashbody, :placeholder => "例：#高齢犬 #犬用フード #全犬種可 #屋内OK #写真映え #ケージ不要 #テラス席 #おしゃれカフェ", class: "form-control",size: "50x3" %>
           </div>
 
           <%= f.submit "\uf1d8投稿", style:'font-family: FontAwesome', class: "btn btn-block btn-success mt-5 mb-5" %>

@@ -11,31 +11,25 @@
         </ul>
       <% end %>
 
-      <div class="px-5 py-3">
+      <div class="px-3 py-3 text-left">
         <%= form_with model:@user, local:true do |f| %>
-          <div class="form-group row">
-            <div class="col-3"><%= f.label :profile_image, "プロフィール画像" ,class: "form-control-file",style: "font-weight: bold;" %></div>
-            <div class="col-9">
-              <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg" %>
-              <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :profile_image, "プロフィール画像" ,class: "form-control-file",style: "font-weight: bold;" %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg" %>
+            <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
           </div>
 
-          <div class="form-group row">
-            <div class="col-3"><%= f.label :name, "ニックネーム" ,style: "font-weight: bold;"%></div>
-            <div class="col-5">
-              <%= f.text_field :name, class: 'form-control' %>
-            </div>
+          <div class="form-group">
+            <%= f.label :name, "ニックネーム" ,style: "font-weight: bold;"%>
+            <%= f.text_field :name, class: 'form-control' %>
           </div>
 
-          <div class="form-group row">
-            <div class="col-3"><%= f.label :introduction, "自己紹介 (最大140文字)" ,style: "font-weight: bold;"%></div>
-            <div class="col-9">
-              <%= f.text_area :introduction, autofocus: true, class: 'form-control' ,size: "50x5" %>
-            </div>
+          <div class="form-group">
+            <%= f.label :introduction, "自己紹介 (最大140文字)" ,style: "font-weight: bold;"%>
+            <%= f.text_area :introduction, autofocus: true, class: 'form-control' ,size: "50x5" %>
           </div>
 
-        <%= f.submit "\uf4ff変更を保存", style:'font-family: FontAwesome', class: "btn btn-block btn-info mt-5 mb-5" %>
+          <%= f.submit "\uf4ff変更を保存", style:'font-family: FontAwesome', class: "btn btn-block btn-info mt-5 mb-5" %>
         <% end %>
       </div>
     </div>
