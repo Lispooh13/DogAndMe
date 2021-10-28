@@ -1,11 +1,10 @@
 <div class="main-visual">
   <div class="main-visual-content">
     <div class="main-title">Welcome to <strong>Dog and Me</strong> !</div>
-      <p class="sub-title">愛犬との旅の思い出を増やそう</p>
+    <p class="sub-title">愛犬との旅の思い出を増やそう</p>
   </div>
   <div class="p-5 bg-white-50">
     <%= link_to "投稿一覧を見る", posts_path, class: "mb-5 mx-4 btn btn-lg btn-light" %><br>
-  
     <% if !user_signed_in? %>
       <%= link_to "ログイン", new_user_session_path , class: "mx-2 btn btn-success "%>
       <%= link_to "新規登録", new_user_registration_path , class: "mx-2 btn btn-primary "%>

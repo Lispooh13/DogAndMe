@@ -26,6 +26,7 @@
     font-family: 'FontAwesome', 'Raleway', 'Yomogi', cursive!important;
 }
 
+// 668px以上の際に背景画像適用
 @media screen and (min-width:668px) {
   .about {
   height: calc(100vh - 146px);
@@ -34,8 +35,23 @@
   background-position: center;
   background-repeat: no-repeat;
  }
-
 }
+
+.about-title {
+ padding-top :20px;
+}
+
+@media screen and (min-width:668px) {
+.about-text {
+ padding-top :10px;
+ font-size :18px;
+ line-height:200%;
+}
+}
+.about-message{
+ font-size :20px;
+}
+
 
 
 .bg-header {
@@ -83,12 +99,14 @@ body {
   margin-left: 50px;
 }
 
-
-.bg-white-50 {
- background-color: rgba(255, 255, 255, .3);
- border-radius: 20px;
- position: absolute;
- top:350px; left:100px
+@media screen and (min-width:550px) {
+ .bg-white-50 {
+  background-color: rgba(255, 255, 255, .3);
+  border-radius: 20px;
+  position: absolute;
+  top: 45vh;
+  left:100px;
+ }
 }
 
 .post-index-image {
@@ -168,22 +186,6 @@ body {
 .sign-in {
  background-color: #e6fafa;
 }
-
-
-.about-title {
- padding-top :20px;
-}
-
-.about-text {
- padding-top :10px;
- font-size :20px;
- line-height:200%;
-}
-
-.about-message{
- font-size :20px;
-}
-
 
 // フラッシュメッセージ
 main {

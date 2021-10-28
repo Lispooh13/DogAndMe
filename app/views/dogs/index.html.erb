@@ -1,4 +1,4 @@
-<div class="container px-5 px-sm-0">
+<div class="container px-2 px-sm-0">
   <div class="row mt-4">
     <div class="col-md-3">
 
@@ -10,17 +10,17 @@
           </div>
   
           <div class="form-group">
-             <label class="dog_type_form">犬種</label>
-                <%= f.text_field :dog_type ,class: "form-control" %>
+            <label class="dog_type_form">犬種</label>
+            <%= f.text_field :dog_type ,class: "form-control" %>
           </div>
   
           <div class="form-group">
-             <label class="dog_size_form">大きさ</label>
-                <%= f.select :dog_size, Dog.dog_sizes.keys, {prompt: "選択してください"}, class: "form-control" %>
+            <label class="dog_size_form">大きさ</label>
+            <%= f.select :dog_size, Dog.dog_sizes.keys, {prompt: "選択してください"}, class: "form-control" %>
           </div>
   
           <div class="form-group">
-                <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
+            <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
           </div>
         <% end %>
       <% end %>
