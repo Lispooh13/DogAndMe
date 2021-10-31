@@ -1,10 +1,10 @@
-<!--いいね未登録のとき-->
+<!--お気に入り未登録のとき-->
   <% if !post.favorites.exists?(user: current_user, post_id: post.id) %>
     <%= link_to post_favorites_path(post), method: :post, remote: true, class: "favorite-btn favorite-post" do %>
       <i class="far fa-heart favorite-btn"></i>
       <%= post.favorites.count %>
     <% end %>
-<!--いいね登録済みのとき-->
+<!--お気に入り登録済みのとき-->
   <% else %>
     <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "favorite-btn favorite-delete" do %>
       <i class="fas fa-heart unfavorite-btn"></i>

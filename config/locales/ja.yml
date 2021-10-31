@@ -6,7 +6,7 @@ ja:
         address: 住所
         category: カテゴリー
         purpose: 主な目的
-        body: 説明
+        body: 感想
       user:
         name: 名前
         introduction: 自己紹介
