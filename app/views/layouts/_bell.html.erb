@@ -1,7 +1,9 @@
 <%= link_to notifications_path do %>
     <% if user_signed_in? && current_user.unchecked_notifications.any? %>
-        <i class="fas fa-bell bell-mark-circle"></i>
-        <i class="fas fa-circle n-circle"></i>
+        <span class="fa-stack">
+            <i class="fas fa-bell fa-stack-1x bell-mark-circle"></i>
+            <i class="fas fa-circle fa-stack-1x n-circle"></i>
+        </span>
     <% else %>
         <i class="fas fa-bell bell-mark"></i>
     <% end %>

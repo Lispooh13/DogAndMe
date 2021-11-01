@@ -158,23 +158,25 @@ body {
  color: #fa9432;
 }
 
-
+// 未読のとき
 .bell-mark-circle {
- font-size: 1.3em;
- color: #f55151;
-
-}
-
-.bell-mark {
  font-size: 1.3em;
  color: #000000;
 }
 
 .n-circle {
   position: absolute;
-  padding-top: 0rem;
-  color: #f55151;
+  padding-left: 1.5rem;
+  color: #e60033;
 }
+
+// 既読のとき
+.bell-mark {
+ font-size: 1.3em;
+ color: #000000;
+}
+
+
 
 
 

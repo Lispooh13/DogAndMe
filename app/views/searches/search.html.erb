@@ -10,7 +10,7 @@
     <% if @posts.blank? %>
       検索結果はありません
     <% else %>
-      <div class="row">
+      <div class="row mb-4">
         <%= render 'posts/index', posts: @posts %>
       </div>
     <% end %>

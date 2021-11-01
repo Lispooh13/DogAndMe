@@ -1,8 +1,8 @@
 <% unless user == current_user %>
   <% if current_user.following?(user) %>
-    <%= link_to "フォローを外す", relationship_path(user.id), method: :delete , class: "btn btn-block btn-sm btn-secondary"%>
+    <%= link_to "フォロー中", relationship_path(user.id), method: :delete , class: "fas fa-check btn btn-block btn-sm btn-secondary"%>
   <% else %>
-    <%= link_to "フォローする", relationships_path(user_id: user.id), method: :post , class: "btn btn-block btn-sm btn-primary"%>
+    <%= link_to "フォロー", relationships_path(user_id: user.id), method: :post , class: "fas fa-plus btn btn-block btn-sm btn-primary"%>
 
   <% end %>
 <% end %>
