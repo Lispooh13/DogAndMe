@@ -1,30 +1,59 @@
-<!--ユーザー詳細画面サイドバー-->
+<!--ユーザー詳細サイドバー-->
 <div class="d-flex justify-content-center align-items-center mb-2">
   <%= link_to edit_user_path(user) do %>
-    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', size: "100x100", fallback: "no-image-icon.jpg",class: "rounded-circle" %>
+    <%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image-icon.jpg", size: "80x80", class: "rounded-circle" %>
   <% end %>
 </div>
-
-<strong>ニックネーム</strong><br>
-<%= user.name %>
+<div class="text-center align-items-center mb-2">
+  <%= user.name %>
+</div>
 <hr>
 <strong>自己紹介</strong><br>
-<%= user.introduction %>
-<hr>
-<strong>フォロー</strong><br>
-<%= link_to user_followings_path(user) do %>
-  <%= user.followings.count %>
-<% end %>
-<hr>
-<strong>フォロワー</strong><br>
-<%= link_to user_followers_path(user) do %>
-  <%= user.followers.count %>
-<% end %>
-<hr>
+  <% if user.introduction.present? %>
+    <%= user.introduction %>
+  <% else %>
+    <div class="small text-muted">
+    （自己紹介文がまだ記入されてません）
+    </div>
+  <% end %>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">
+        投稿数
+      </th>
+      <td class="align-items-center">
+        <%= user.posts.count %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        フォロー中
+      </th>
+      <td class="align-items-center">
+        <%= link_to user_followings_path(user) do %>
+          <%= user.followings.count %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+        フォロワー
+      </th>
+      <td class="align-items-center">
+        <%= link_to user_followers_path(user) do %>
+          <%= user.followers.count %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 <div class= "my-4">
   <% if @user.id == current_user.id %>
-    <%= link_to " 編集", edit_user_path(user), class: "fas fa-user-edit btn btn-block btn-outline-secondary" %>
+    <%= link_to " プロフィール編集", edit_user_path(user), class: "fas fa-user-edit btn btn-block btn-outline-secondary" %>
   <% else %>
     <%= render 'relationships/follow_btn', user: user %>
   <% end %>

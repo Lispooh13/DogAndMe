@@ -6,59 +6,58 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto ">
-                <li>
+        <li>
           <%= form_with(url: search_path, local: true, method: :get, class: "nav-link search-form") do |f| %>
             <%= f.search_field :keyword, placeholder: "キーワードで検索",size: "20", class:"border-0 col-10'"%>
             <%= f.submit  "\uf002", style:'font-family: FontAwesome',class: "btn btn-default text-dark px-0 py-1" %>
           <% end %>
         </li>
-
         <li>
           <%= link_to posts_path ,class: 'nav-link text-dark' do%>
-            <i class="fas fa-dog"></i><strong>一覧</strong>
+            <i class="fas fa-dog fa-fw faa-shake animated-hover"></i><strong>一覧</strong>
           <% end %>
         </li>
 
         <% if user_signed_in? %>
           <li>
             <%= link_to post_hashtag_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-hashtag"></i><strong>タグ一覧</strong>
+              <i class="fas fa-hashtag fa-fw faa-shake animated-hover"></i><strong>タグ一覧</strong>
             <% end %>
           </li>
           <li>
             <%= link_to new_post_path ,class: 'nav-link text-dark' do%>
-              <i class="far fa-plus-square"></i><strong>投稿する</strong>
+              <i class="far fa-plus-square fa-fw faa-bounce animated-hover"></i><strong>投稿する</strong>
             <% end %>
           </li>
           <li>
             <%= link_to user_path(current_user.id) ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-user"></i><strong>マイページ</strong>
+              <i class="fas fa-user fa-fw faa-vertical animated-hover"></i><strong>マイページ</strong>
             <% end %>
           </li>
           <li>
             <%= link_to users_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-users"></i><strong>Users</strong>
+              <i class="fas fa-users fa-fw faa-vertical animated-hover"></i><strong>Users</strong>
             <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, :method => :delete ,class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i><strong>ログアウト</strong>
+              <i class="fas fa-sign-out-alt fa-fw faa-flash animated-hover"></i><strong>ログアウト</strong>
             <% end %>
           </li>
         <% else %>
           <li>
             <%= link_to about_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-paw"></i><strong>About</strong>
+              <i class="fas fa-paw fa-fw faa-shake animated-hover"></i><strong>About</strong>
             <% end %>
           </li>
           <li>
             <%= link_to new_user_registration_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-user-plus"></i><strong>新規登録</strong>
+              <i class="fas fa-user-plus fa-fw faa-vertical animated-hover"></i><strong>新規登録</strong>
             <% end %>
           </li>
           <li>
             <%= link_to new_user_session_path ,class: 'nav-link text-dark' do%>
-              <i class="fas fa-sign-in-alt"></i><strong>ログイン</strong>
+              <i class="fas fa-sign-in-alt fa-fw faa-vertical animated-hover"></i><strong>ログイン</strong>
             <% end %>
           </li>
         <% end %>
