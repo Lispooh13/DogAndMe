@@ -31,25 +31,18 @@
         <% end %>
         <div class="align-middle"><%= link_to @user.name, user_path(@user) %></div>
       </div>
-      <hr>
-      <strong>場所名</strong><br>
-      <%= @post.place %>
-      <hr>
-      <strong>住所</strong><br>
-      <%= @post.address %>
-      <hr>
-      <strong>カテゴリー</strong><br>
-      <%= @post.category %>
-      <hr>
-      <strong>投稿日</strong><br>
-      <%= @post.created_at.strftime("%Y/%m/%d") %>
-      <hr>
-      <strong>感想</strong><br>
-      <%= @post.body %><br>
+      <p class="text-right">投稿日:<%= @post.created_at.strftime("%Y/%m/%d") %></p>
+            <%= @post.body %><br>
       <% @post.hashtags.each do |hashtag| %>
         <%= link_to "#" + hashtag.hashname , hashtag_name_path(hashtag.hashname) %>
       <% end %>
+      <hr>
+      <strong>場所の情報</strong><br>
+      『<%= @post.place %>』<br>
+      カテゴリー: <%= @post.category %><br>
+      <i class="fas fa-map-marker"></i><%= @post.address %>
       
+      <hr>
       <% if current_user != nil %>
         <div class="d-flex mt-1 justify-content-end">
           <% if @user.id == current_user.id %>

@@ -28,7 +28,7 @@
   <% else %>
     <%= render 'relationships/follow_btn', user: user %>
   <% end %>
-  <%= link_to " お気に入り一覧", favorites_user_path(user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
+  <%= link_to " いいね一覧", favorites_user_path(user), class: "fas fa-heart favorites-post btn btn-block btn-outline-secondary"%>
   <%= link_to " わんちゃん", user_dogs_path(user), class: "fas fa-dog dog-link btn btn-block btn-outline-secondary" %>
   <%= link_to " 投稿一覧", user_path(user), class: "fas fa-user btn btn-block btn-outline-secondary"%>
 </div>

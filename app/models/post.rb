@@ -24,16 +24,16 @@ class Post < ApplicationRecord
 
 # 通知
   def create_notification_favorite!(current_user)
-    # すでに「お気に入り」されているか検索
+    # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
-    # お気に入りされていない場合で、お気に入りした１度のみ、通知レコードを作成（押した数通知がいくのを防止）
+    # いいねされていない場合で、いいねした１度のみ、通知レコードを作成（押した数通知がいくのを防止）
     if temp.blank?
       notification = current_user.active_notifications.new(
         post_id: id,
         visited_id: user_id,
         action: 'favorite'
       )
-      # 自分で行う自分の投稿に対するお気に入りの場合は、通知済みとする
+      # 自分で行う自分の投稿に対するいいねの場合は、通知済みとする
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end

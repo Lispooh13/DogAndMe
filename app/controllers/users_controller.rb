@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).order(created_at: :desc).per(15)
   end
 
-  #お気に入り一覧
+  #いいね一覧
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
