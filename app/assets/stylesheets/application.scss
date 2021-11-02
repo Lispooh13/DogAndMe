@@ -158,22 +158,11 @@ body {
  color: #fa9432;
 }
 
-// ベルマーク　未読のとき
-.bell-mark-circle {
- font-size: 1.3em;
-}
-
+// ベルマーク未読
 .n-circle {
-  position: absolute;
   padding-left: 22px;
   padding-top: 6px;
   color: #e60033;
-}
-
-// 既読のとき
-.bell-mark {
- font-size: 1.3em;
- color: #000000;
 }
 
 // 新規登録、ログイン
