@@ -5,7 +5,9 @@
       
       <%= render "error_messages", post: @post %>
       
-      <div class="px-3 py-3 text-left">
+      <p class="px-3 py-1 text-left"><font color="#ff0000">*必須</font></p>
+      
+      <div class="px-3 py-1 text-left">
         <%= form_with model:@post, local:true do |f| %>
           <div class="form-group">
             <%= f.label :image, "画像(複数可)" ,class: "form-control-file" ,style: "font-weight: bold;"%>
