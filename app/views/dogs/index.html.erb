@@ -23,7 +23,10 @@
             <%= f.submit 'わんちゃん登録',class: "btn btn-success" %>
           </div>
         <% end %>
+      <% else %>
+          <%=render "users/info" ,user: @user %>
       <% end %>
+      
     </div>
     <div class="col-md-8 offset-md-1">
       <div class="d-flex">

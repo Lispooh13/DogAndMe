@@ -1,9 +1,7 @@
 <%= link_to notifications_path do %>
   <% if user_signed_in? && current_user.unchecked_notifications.any? %>
-    <span class="fa-stack">
-      <i class="fas fa-bell faa-ring animated fa-stack-2x text-dark"></i>
-      <i class="fas fa-circle fa-stack-1x n-circle"></i>
-    </span>
+    <i class="fas fa-bell fa-2x faa-ring animated text-dark"></i>
+    <i class="fas fa-circle" style="color:Tomato"></i>
   <% else %>
     <i class="fas fa-bell fa-2x text-dark"></i>
   <% end %>
