@@ -11,7 +11,7 @@
 
       <div class="row mb-4">
         <% if @favorites_posts.present? %>
-        <%= render 'posts/index', posts: @favorites_posts %>
+          <%= render 'posts/index', posts: @favorites_posts %>
         <% end %>
       </div>
       <%= paginate @favorites_posts %>
