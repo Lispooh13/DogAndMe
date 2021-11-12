@@ -10,12 +10,16 @@
     </div>
   </div>
   <div class="row my-3">
-    <% if params[:hash_name] == nil %>
-    <% else %>
+    <% unless params[:hash_name] == nil %>
       <%= render 'posts/index', posts: @posts %>
-        <%= paginate @posts %>
     <% end %>
   </div>
+  
+  <!--上のrow中に以下入れるとページネーションのレイアウトが中央にならないため再度記入-->
+  <% unless params[:hash_name] == nil %>
+    <%= paginate @posts %>
+  <% end %>
+  
 
   <div class="row mb-4">
     <div class= "col-md-12">
