@@ -26,7 +26,6 @@
     font-family: 'FontAwesome', 'Raleway', 'Yomogi', cursive!important;
 }
 
-// アバウトページ
 .about-box {
  background-color:#FFFFFF;
 }
@@ -57,6 +56,25 @@
  font-size :20px;
  text-align:center;
 }
+
+.bg-header {
+ background-color:#FFB745;
+}
+
+.bg-footer {
+ background-color:#66380a;
+}
+
+.logo {
+ mix-blend-mode:darken;
+}
+
+body {
+ padding-top: 106px;
+ padding-bottom: 40px;
+ background-color:#FDF5EE;
+}
+
 
 // トップページ
 .main-visual {
@@ -95,31 +113,13 @@
  }
 }
 
-// ページ共通
+
 .post-index-image {
  height: 170px;
  width: 100%;
  object-fit: cover;
 }
 
-
-.bg-header {
- background-color:#FFB745;
-}
-
-.bg-footer {
- background-color:#66380a;
-}
-
-.logo {
- mix-blend-mode:darken;
-}
-
-body {
- padding-top: 106px;
- padding-bottom: 40px;
- background-color:#FDF5EE;
-}
 
 .pagination>li>a:hover {
   border-radius: 15px;
