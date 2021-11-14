@@ -96,6 +96,13 @@
 }
 
 // ページ共通
+.post-index-image {
+ height: 170px;
+ width: 100%;
+ object-fit: cover;
+}
+
+
 .bg-header {
  background-color:#FFB745;
 }
