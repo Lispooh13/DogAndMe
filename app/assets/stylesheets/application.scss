@@ -26,16 +26,7 @@
     font-family: 'FontAwesome', 'Raleway', 'Yomogi', cursive!important;
 }
 
-// // 668px以上の際に背景画像適用
-// @media screen and (min-width:668px) {
-//   .about {
-//   height: calc(100vh - 146px);
-//   background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//  }
-// }
+// アバウトページ
 .about-box {
  background-color:#FFFFFF;
 }
@@ -46,6 +37,7 @@
  background-color: #ffe4e1;
 }
 
+// 668px以上の際はテキストを中央寄せ
 @media screen and (min-width:668px) {
 .about-text {
  padding-top :10px;
@@ -66,25 +58,7 @@
  text-align:center;
 }
 
-
-.bg-header {
- background-color:#FFB745;
-}
-
-.bg-footer {
- background-color:#66380a;
-}
-
-.logo {
- mix-blend-mode:darken;
-}
-
-body {
- padding-top: 106px;
- padding-bottom: 40px;
- background-color:#FDF5EE;
-}
-
+// トップページ
 .main-visual {
  height: calc(100vh - 146px);
  background-image: image-url("top.jpeg");
@@ -106,12 +80,11 @@ body {
  color: #82654D;
 }
 
-
-
 .main-visual-content {
   margin-left: 50px;
 }
 
+// 550px以上の際のボタン位置
 @media screen and (min-width:550px) {
  .bg-white-50 {
   background-color: rgba(255, 255, 255, .3);
@@ -122,10 +95,23 @@ body {
  }
 }
 
-.post-index-image {
- height: 170px;
- width: 100%;
- object-fit: cover;
+// ページ共通
+.bg-header {
+ background-color:#FFB745;
+}
+
+.bg-footer {
+ background-color:#66380a;
+}
+
+.logo {
+ mix-blend-mode:darken;
+}
+
+body {
+ padding-top: 106px;
+ padding-bottom: 40px;
+ background-color:#FDF5EE;
 }
 
 .pagination>li>a:hover {
@@ -170,7 +156,6 @@ body {
 .dog-link{
  color: #fa9432;
 }
-
 
 // 新規登録、ログイン
 .sign-in-box {

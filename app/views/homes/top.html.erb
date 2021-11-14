@@ -6,8 +6,10 @@
   <div class="p-5 bg-white-50">
     <%= link_to "投稿一覧を見る", posts_path, class: "mb-5 mx-4 btn btn-lg btn-light" %><br>
     <% if !user_signed_in? %>
-      <%= link_to "ログイン", new_user_session_path , class: "mx-2 btn btn-success "%>
-      <%= link_to "新規登録", new_user_registration_path , class: "mx-2 btn btn-primary "%>
+      <%= link_to "ログイン", new_user_session_path , class: "mx-2 btn btn-success"%>
+      <%= link_to "新規登録", new_user_registration_path , class: "mx-2 btn btn-primary"%>
+    <% else %>
+      <%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "mx-5 btn btn-dark"%>
     <% end %>
   </div>
 </div>
