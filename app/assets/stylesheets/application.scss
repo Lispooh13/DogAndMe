@@ -26,19 +26,24 @@
     font-family: 'FontAwesome', 'Raleway', 'Yomogi', cursive!important;
 }
 
-// 668px以上の際に背景画像適用
-@media screen and (min-width:668px) {
-  .about {
-  height: calc(100vh - 146px);
-  background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- }
+// // 668px以上の際に背景画像適用
+// @media screen and (min-width:668px) {
+//   .about {
+//   height: calc(100vh - 146px);
+//   background: linear-gradient( 130deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), image-url("about.jpeg");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//  }
+// }
+.about-box {
+ background-color:#FFFFFF;
 }
 
 .about-title {
  padding-top :20px;
+ text-align:center;
+ background-color: #ffe4e1;
 }
 
 @media screen and (min-width:668px) {
@@ -46,12 +51,20 @@
  padding-top :10px;
  font-size :18px;
  line-height:200%;
+ text-align:center;
 }
-}
-.about-message{
- font-size :20px;
 }
 
+.about-image {
+ width:300px;
+ height:200px;
+ border-radius: 35px;
+}
+
+.about-message{
+ font-size :20px;
+ text-align:center;
+}
 
 
 .bg-header {
