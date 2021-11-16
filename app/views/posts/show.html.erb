@@ -46,8 +46,8 @@
       <% if current_user != nil %>
         <div class="d-flex mt-1 justify-content-end">
           <% if @user.id == current_user.id %>
-            <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn  btn-outline-info mr-3" %></td>
-            <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn  btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %></td>
+            <%= link_to " 編集", edit_post_path(@post), class: "fas fa-edit btn  btn-outline-info mr-3" %>
+            <%= link_to " 削除", post_path(@post), class: "fas fa-trash btn  btn-outline-dark" , method: :delete ,"data-confirm" => "本当に投稿を削除しますか？" %>
           <% end %>
         </div>
       <% end %>
