@@ -25,6 +25,8 @@
 
 ## 設計書
 - ER図  <img width="992" alt="スクリーンショット 2021-11-05 23 28 56" src="https://user-images.githubusercontent.com/88155314/140526798-d755f466-1548-4721-817f-fbe4e4362bbf.png">
+- テーブル定義書　https://docs.google.com/spreadsheets/d/1_RnDl8HpCz9idaEMGsjpcOZ4Lgqrb7N_eMY5z2c6h3o/edit#gid=1057628005
+- アプリケーション詳細設計　https://docs.google.com/spreadsheets/d/1Gp5X7sv4y4kz66pKRJ9heFXrF1L7U-bC3Oiq_Ye2bic/edit#gid=1837894092
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1pju8xNFZhJ97pJQXef4C5GVJLqodyp5_J4uNo-nEyOE/edit#gid=0
